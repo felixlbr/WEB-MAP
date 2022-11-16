@@ -47,7 +47,7 @@ $.ajax({
         console.log(compteur)
     }
 });
-*/
+
 
 //pour récupérer les gares de la ligne
 var tab = []
@@ -64,5 +64,12 @@ $.ajax({
         }
     }
 });
-console.log('ok')
-tab.forEach((item) { console.log(item)})
+*/
+
+L.marker([48.770611, 2.052539]).addTo(map);
+var latlngs = [
+    [[48.770611, 2.052539], [48.770611, 3.052539]],
+    [[48.870611, 2.152539], [48.870611, 3.152539]]
+];
+var polyline = L.polyline(latlngs,{color:'red'}).addTo(map);
+map.fitBounds(polyline.getBounds());
