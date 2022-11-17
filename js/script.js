@@ -66,10 +66,41 @@ $.ajax({
 });
 */
 
+//pour récupérer les gares de la ligne
+var tab = []
+$.ajax({
+    method: 'GET',
+    url: "https://opendata.hauts-de-seine.fr/api/records/1.0/search/?dataset=traces-du-reseau-de-transport-ferre-dile-de-france&q=&facet=idrefliga&facet=idrefligc&facet=res_com&facet=mode&facet=date_mes&refine.res_com=RER+C&rows=100",
+    success : function(data){
+        JSON.stringify(data);
+        for(let i=0; i<data.records.length;++i){
+            var tab=[];
+            for(let j=0; j<data.records[i].fields.geo_shape.coordinates.length;++j){
+                tab.push(data.records[i].fields.geo_shape.coordinates[j].reverse());
+
+                var path = L.polyline(tab,{color:'blue'}).addTo(map);
+            }
+        }
+        /*
+        for (let i = 0; i < data.records.length; i++) {
+            //if(data.records[i].fields.departement_numero == 75){
+            if (data.records[i].fields.c){
+                tab.push(data.records[i].fields.libelle_point_arret)
+            }
+        }*/
+    }
+});
+
+/*
+
 L.marker([48.770611, 2.052539]).addTo(map);
+L.marker([47.86181124643293, 3.967288511953102]).addTo(map);
+L.marker([47.86065107913394,3.970237356926179]).addTo(map);
 var latlngs = [
     [[48.770611, 2.052539], [48.770611, 3.052539]],
     [[48.870611, 2.152539], [48.870611, 3.152539]]
 ];
 var polyline = L.polyline(latlngs,{color:'red'}).addTo(map);
 map.fitBounds(polyline.getBounds());
+
+*/
