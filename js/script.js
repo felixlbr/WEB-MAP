@@ -88,12 +88,12 @@ function afficherLigne(type, ligne){
     do{
         $.ajax({
             method: 'GET',
+            url: "https://opendata.hauts-de-seine.fr/api/records/1.0/search/?dataset=traces-du-reseau-de-transport-ferre-dile-de-france&q=&facet=mode&facet=indice_lig&refine.mode="+
+                type.toUpperCase().trim() + "&refine.indice_lig=" + ligne.toUpperCase().trim() + "&rows=100&start=" + base*100,
             success : function(data){
                 cpt = data.parameters.rows;
                 tracerLigne(data);
             },
-            url: "https://opendata.hauts-de-seine.fr/api/records/1.0/search/?dataset=traces-du-reseau-de-transport-ferre-dile-de-france&q=&facet=mode&facet=indice_lig&refine.mode="+
-                type.toUpperCase().trim() + "&refine.indice_lig=" + ligne.toUpperCase().trim() + "&rows=100&start=" + base*100
         });
         ++ base;
     }while(cpt!==0);
