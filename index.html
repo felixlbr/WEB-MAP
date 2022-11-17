@@ -1,10 +1,110 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>WEB MAP</title>
+    <meta charset="utf-8">
+    <title>WEB - MAP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
 
+    <fieldset class="liste-type">
+        <legend>Sélectionnez les types de transport :</legend>
+        <div>
+            <input type="checkbox" id="rer">
+            <label for="rer">RER</label>
+        </div>
+        <div>
+            <input type="checkbox" id="metro">
+            <label for="metro">Métro</label>
+        </div>
+        <div>
+            <input type="checkbox" id="train">
+            <label for="train">Train</label>
+        </div>
+
+    </fieldset>
+
+    <fieldset class="ligne-rer" hidden>
+        <legend>Sélectionnez le RER :</legend>
+        <div id="RER liste">
+            <input type="radio" id="a" name = "ligne">
+            <label for="a">RER A</label>
+            <input type="radio" id="b"  name = "ligne">
+            <label for="b">RER B</label>
+            <input type="radio" id="c"  name = "ligne">
+            <label for="c">RER C</label>
+            <input type="radio" id="d"  name = "ligne">
+            <label for="d">RER D</label>
+            <input type="radio" id="e"  name = "ligne">
+            <label for="e">RER E</label>
+        </div>
+    </fieldset>
+
+    <fieldset class="ligne-metro" hidden>
+        <legend>Sélectionnez le métro :</legend>
+        <div id="METRO liste">
+            <input type="radio" id="1" name = "ligne">
+            <label for="1">LIGNE 1</label>
+            <input type="radio" id="2" name = "ligne">
+            <label for="2">LIGNE 2</label>
+            <input type="radio" id="3" name = "ligne">
+            <label for="3">LIGNE 3</label>
+            <input type="radio" id="4" name = "ligne">
+            <label for="4">LIGNE 4</label>
+            <input type="radio" id="5" name = "ligne">
+            <label for="5">LIGNE 5</label>
+            <input type="radio" id="6" name = "ligne">
+            <label for="6">LIGNE 6</label>
+            <input type="radio" id="7" name = "ligne">
+            <label for="7">LIGNE 7</label>
+            <input type="radio" id="8" name = "ligne">
+            <label for="8">LIGNE 8</label>
+            <input type="radio" id="9" name = "ligne">
+            <label for="9">LIGNE 9</label>
+            <input type="radio" id="10" name = "ligne">
+            <label for="10">LIGNE 10</label>
+            <input type="radio" id="11" name = "ligne">
+            <label for="11">LIGNE 11</label>
+            <input type="radio" id="12" name = "ligne">
+            <label for="12">LIGNE 12</label>
+            <input type="radio" id="13" name = "ligne">
+            <label for="13">LIGNE 13</label>
+            <input type="radio" id="14" name = "ligne">
+            <label for="14">LIGNE 14</label>
+        </div>
+    </fieldset>
+
+    <fieldset class="ligne-train" hidden>
+        <legend>Sélectionnez le train :</legend>
+        <div id="TRAIN liste">
+            <input type="radio" id="h" name = "ligne">
+            <label for="h">LIGNE H</label>
+            <input type="radio" id="j" name = "ligne">
+            <label for="j">LIGNE J</label>
+            <input type="radio" id="k" name = "ligne">
+            <label for="k">LIGNE K</label>
+            <input type="radio" id="l" name = "ligne">
+            <label for="l">LIGNE L</label>
+            <input type="radio" id="n" name = "ligne">
+            <label for="n">LIGNE N</label>
+            <input type="radio" id="p" name = "ligne">
+            <label for="p">LIGNE P</label>
+            <input type="radio" id="r" name = "ligne">
+            <label for="r">LIGNE R</label>
+            <input type="radio" id="u" name = "ligne">
+            <label for="u">LIGNE U</label>
+        </div>
+    </fieldset>
+
+    <div id="map" style="width: 900px; height: 800px;"></div>
+
+    <img src="./img/loader.gif" class="loader" alt="">
+
+    <script src="./js/script.js"></script>
 </body>
 </html>
