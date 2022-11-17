@@ -5,6 +5,13 @@ var tempStation
 var markers = []
 var polylines = []
 
+var arret = L.icon({
+    iconUrl: './../img/arret3.png',
+    iconSize:     [10, 10], // size of the icon
+    iconAnchor:   [5, 5], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+});
+
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -22,8 +29,6 @@ function clearMap(){
     polylines.forEach(item => {
         map.removeLayer(item)
     })
-
-
 }
 
 function meteo (marker){
@@ -57,7 +62,7 @@ function afficherGares(ligne){
             data.records.forEach(item => {
                 lat = item.fields.geo_point_2d[0]
                 lon = item.fields.geo_point_2d[1]
-                marker = L.marker([lat, lon])
+                marker = L.marker([lat, lon], {icon: arret})
                 markers.push(marker)
                 marker.bindPopup('<b>' + item.fields.nom_zdl + '</b>')
                 marker.addTo(map)
@@ -101,7 +106,7 @@ function tracerLigne(data){
         var tab=[];
         for(let j=0; j<data.records[i].fields.geo_shape.coordinates.length;++j){
             tab.push(data.records[i].fields.geo_shape.coordinates[j].reverse());
-            path = L.polyline(tab,{color: '#' + data.records[i].fields.colourweb_hexa}).addTo(map);
+            path = L.polyline(tab,{color: '#' + data.records[i].fields.colourweb_hexa, weight: 7}).addTo(map);
             polylines.push(path)
         }
     }
