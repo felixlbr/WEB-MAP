@@ -3,6 +3,7 @@ const API_KEY = '4583082f2742ab2992a81c092de73c65'
 
 var tempStation
 var markers = []
+var polylines = []
 
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -11,12 +12,18 @@ const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 $('input').on('change', function () {
     afficherGares(this.id)
+    afficherLigne('RER', this.id)
 })
 
 function clearMap(){
-    markers.forEach((item, index) => {
+    markers.forEach(item => {
         map.removeLayer(item)
     })
+    polylines.forEach(item => {
+        map.removeLayer(item)
+    })
+
+
 }
 
 function meteo (marker){
@@ -63,6 +70,41 @@ function afficherGares(ligne){
             meteo(item)
         })
     })
+}
+
+
+/** Affichage des lignes
+ *  type : type de ligne (rer, metro, ter...)
+ *  ligne : le numéro de la ligne (en minuscule pour les lettres)
+ * */
+function afficherLigne(type, ligne){
+    let cpt=0;
+    let base = 0;
+    do{
+        $.ajax({
+            method: 'GET',
+            success : function(data){
+                cpt = data.parameters.rows;
+                tracerLigne(data);
+            },
+            url: "https://opendata.hauts-de-seine.fr/api/records/1.0/search/?dataset=traces-du-reseau-de-transport-ferre-dile-de-france&q=&facet=mode&facet=indice_lig&refine.mode="+
+                type.toUpperCase().trim() + "&refine.indice_lig=" + ligne.toUpperCase().trim() + "&rows=100&start=" + base*100
+        });
+        ++ base;
+    }while(cpt!==0);
+
+}
+
+function tracerLigne(data){
+    var path
+    for(let i=0; i<data.records.length;++i){
+        var tab=[];
+        for(let j=0; j<data.records[i].fields.geo_shape.coordinates.length;++j){
+            tab.push(data.records[i].fields.geo_shape.coordinates[j].reverse());
+            path = L.polyline(tab,{color: '#' + data.records[i].fields.colourweb_hexa}).addTo(map);
+            polylines.push(path)
+        }
+    }
 }
 
 
