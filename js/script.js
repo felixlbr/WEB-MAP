@@ -5,12 +5,12 @@ const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-var testType = "RER";
-var testLigne = "E";
+var testType = "rer";
+var testLigne = "D";
 afficherLigne(testType,testLigne);
 
 /** Affichage des lignes
- *  type : type de ligne (rer, metro, ter...)
+ *  type : type de ligne (rer, metro, tramway...)
  *  ligne : le numéro de la ligne (en minuscule pour les lettres)
 * */
 function afficherLigne(type, ligne){
@@ -24,7 +24,7 @@ function afficherLigne(type, ligne){
                 tracerLigne(data);
             },
             url: "https://opendata.hauts-de-seine.fr/api/records/1.0/search/?dataset=traces-du-reseau-de-transport-ferre-dile-de-france&q=&facet=mode&facet=indice_lig&refine.mode="+
-                type + "&refine.indice_lig=" + ligne.toUpperCase() + "&rows=100&start=" + base*100
+                type.toUpperCase() + "&refine.indice_lig=" + ligne.toUpperCase() + "&rows=100&start=" + base*100
         });
         ++ base;
     }while(cpt!==0);
