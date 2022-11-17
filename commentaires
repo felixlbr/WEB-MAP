@@ -8,3 +8,13 @@ traçage des lignes de métro
 
 3)
 générateur de trajet en métro
+
+
+
+mode existants :
+-   RER
+-   TRAMWAY
+-   METRO
+-   TER
+-   NAVETTE
+-   RER C
