@@ -1,68 +1,69 @@
-const map = L.map('map').setView([48.856614, 2.3522219], 11);
+const map = L.map('map').setView([48.856614, 2.3522219], 10);
+const API_KEY = '4583082f2742ab2992a81c092de73c65'
+
+var tempStation
+var markers = []
 
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-/*
-const marker = L.marker([48.84169080236788, 2.2686434551720724]).addTo(map)
-.bindPopup('<b>IUT de Paris</b><br />Anciennement Descartes').openPopup();
+$('input').on('change', function () {
+    afficherGares(this.id)
+})
 
-function onClick(e) {
-var longitude = e.latlng.lng;
-var latitude = e.latlng.lat;
-console.log(longitude, latitude)
+function clearMap(){
+    markers.forEach((item, index) => {
+        map.removeLayer(item)
+    })
 }
-map.on('click', onClick);
-*/
 
-//    url: "https://ressources.data.sncf.com/api/records/1.0/search/?dataset=referentiel-gares-voyageurs&q=&rows=1000&sort=-segmentdrg_libelle&facet=departement_numero&refine.departement_numero=75",
-
-// data.records[i].fields.rg_libelle.includes('LIGNE C') &&
-
-// data.records[i].fields.departement_numero == 75
-
-/*
-// pour récupérer les coordonnées d'une gare
-$.ajax({
-    method: 'GET',
-    url: "https://ressources.data.sncf.com/api/records/1.0/search/?dataset=referentiel-gares-voyageurs&q=&rows=10000&sort=gare_alias_libelle_noncontraint",
-    success : function(data){
-        JSON.stringify(data)
-        var lon, lat, compteur
-        compteur = 0
-        //pas de co donc tester à la maison
-        for (let i = 0; i < data.records.length; i++) {
-            //if(data.records[i].fields.departement_numero == 75){
-            if (data.records[i].fields.latitude_entreeprincipale_wgs84 && data.records[i].fields.longitude_entreeprincipale_wgs84 && data.records[i].fields.rg_libelle){
-                if (data.records[i].fields.rg_libelle.includes('LIGNE C')){
-                    lat = data.records[i].fields.latitude_entreeprincipale_wgs84
-                    lon = data.records[i].fields.longitude_entreeprincipale_wgs84
-                    L.marker([lat, lon]).addTo(map).bindPopup('<b>' + data.records[i].fields.gare_alias_libelle_noncontraint + '</b><br/>' + 'Capacité :' + ' '+ data.records[i].fields.rg_libelle).openPopup();
-                    compteur++
-                }
-            }
+function meteo (marker){
+    var coord = marker.getLatLng()
+    $.ajax({
+        method: "GET",
+        async: false,
+        url: "https://api.openweathermap.org/data/2.5/weather?lat=" + coord.lat + "&lon=" + coord.lng +"&lang=fr&appid=" + API_KEY,
+        success: function(result){
+            JSON.stringify(result)
+            tempStation = Math.round(result.main.temp - 275) //merci Eyléa
+        },
+        error: function (){
+            tempStation = 'Météo indisponible'
         }
-        console.log(compteur)
-    }
-});
-*/
+    })
+    var content = marker.getPopup().getContent()
+    marker.bindPopup(content + '<br>Température : ' + tempStation + '°C').addTo(map)
+}
 
-//pour récupérer les gares de la ligne
-var tab = []
-$.ajax({
-    method: 'GET',
-    url: "https://ressources.data.sncf.com/api/records/1.0/search/?dataset=sncf-lignes-par-gares-idf&q=&rows=500&facet=rer&facet=a&facet=b&facet=c&facet=d&facet=e",
-    success : function(data){
-        JSON.stringify(data)
-        for (let i = 0; i < data.records.length; i++) {
-            //if(data.records[i].fields.departement_numero == 75){
-            if (data.records[i].fields.c){
-                tab.push(data.records[i].fields.libelle_point_arret)
-            }
+function afficherGares(ligne){
+    clearMap()
+    $.ajax({
+        method: 'GET',
+        async: false,
+        url: "https://opendata.hauts-de-seine.fr/api/records/1.0/search/?dataset=gares-et-stations-du-reseau-ferre-dile-de-france-par-ligne&q=&rows=500&facet=mode&facet=indice_lig&refine.mode=RER&refine.indice_lig=" + ligne.toUpperCase().trim(),
+        success : function(data) {
+            JSON.stringify(data)
+            var existe = false
+            var lon, lat;
+            data.records.forEach(item => {
+                lat = item.fields.geo_point_2d[0]
+                lon = item.fields.geo_point_2d[1]
+                marker = L.marker([lat, lon])
+                markers.push(marker)
+                marker.bindPopup('<b>' + item.fields.nom_zdl + '</b>')
+                marker.addTo(map)
+            })
+            if(!data.records.length) alert('La ligne ne semble pas exister')
         }
-    }
-});
-console.log('ok')
-tab.forEach((item) { console.log(item)})
+    })
+    markers.forEach((item, index) => {
+        item.addEventListener('click', function (){
+            meteo(item)
+        })
+    })
+}
+
+
+
