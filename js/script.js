@@ -132,5 +132,40 @@ function tracerLigne(data){
     }
 }
 
+/** Traçage des lignes
+ *  x : la valeur à convertir
+ * */
+function deg2rad(x){
+    return Math.PI*x/180;
+}
+
+/** Calcule la distance à vole d'oiseau entre deux markers sur la carte
+ *  m1 : marker 1
+ *  m2 : marker 2
+ * */
+function distance(m1, m2) {
+    $earth_radius = 6378137;   // Terre = sphère de 6378km de rayon
+    $rlo1 = deg2rad(m1.getLatLng().lng);    // CONVERSION
+    $rla1 = deg2rad(m1.getLatLng().lat);
+    $rlo2 = deg2rad(m2.getLatLng().lng);
+    $rla2 = deg2rad(m2.getLatLng().lat);
+    $dlo = ($rlo2 - $rlo1) / 2;
+    $dla = ($rla2 - $rla1) / 2;
+    $a = (Math.sin($dla) * Math.sin($dla)) + Math.cos($rla1) * Math.cos($rla2) * (Math.sin($dlo) * Math.sin($dlo
+    ));
+    $d = 2 * Math.atan2(Math.sqrt($a), Math.sqrt(1 - $a));
+    return Math.round((($earth_radius * $d) / 1000 ) * 100) / 100 ;
+}
+
+function pointLePlusProche(m1){
+
+}
+
+
+
+house = L.marker([48.816673278808594, 1.9433393478393555], {icon: arret})
+fifi = L.marker([48.8022643, 1.9696688], {icon: arret})
+
+console.log(distance(house, fifi))
 
 
