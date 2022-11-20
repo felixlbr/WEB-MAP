@@ -92,6 +92,7 @@ function afficherGares(type, ligne){
         item.addEventListener('click', function (){
             //loader.style.display = 'block'
             //meteo(item)
+            console.log(item.getLatLng().lat, item.getLatLng().lng)
         })
     })
 }
@@ -199,4 +200,3 @@ $.ajax({
         }console.log('fini')
     }
 })
-
