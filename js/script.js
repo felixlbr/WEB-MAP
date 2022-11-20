@@ -90,8 +90,8 @@ function afficherGares(type, ligne){
     })
     markers.forEach((item, index) => {
         item.addEventListener('click', function (){
-            loader.style.display = 'block'
-            meteo(item)
+            //loader.style.display = 'block'
+            //meteo(item)
         })
     })
 }
@@ -157,15 +157,46 @@ function distance(m1, m2) {
     return Math.round((($earth_radius * $d) / 1000 ) * 100) / 100 ;
 }
 
-function pointLePlusProche(m1){
-
+function placerPoint(lat, lon){
+    marker = L.marker([lat, lon], {icon: arret})
+    markers.push(marker)
+    //marker.bindPopup('<b>' + item.fields.nom_zdl + '</b>')
+    marker.addTo(map)
+    return marker
 }
 
 
+var start = '48.83201646822717%2C1.943551771507983'
+var end = '48.84190466356479%2C2.2679293794574162'
 
-house = L.marker([48.816673278808594, 1.9433393478393555], {icon: arret})
-fifi = L.marker([48.8022643, 1.9696688], {icon: arret})
 
-console.log(distance(house, fifi))
 
+$.ajax({
+    method: "GET",
+    url: "https://api.external.citymapper.com/api/1/directions/transit?Citymapper-Partner-Key=TW0S3Zfv5e6H5wdq4YIkBBFAs4tX3Zva&start=" + start + "&end=" + end + "&traveltime_types=transit",
+    success: function(data) {
+        var bus = []
+        for (let i = 0; i < data.routes[0].legs.length; i++) {
+            if (data.routes[0].legs[i].travel_mode == 'transit') {
+                var couleur = data.routes[0].legs[i].services[0].color
+                if (data.routes[0].legs[i].vehicle_types[0] == 'rail') {
+                    var nomLigne = data.routes[0].legs[i].services[0].name
+                    console.log(nomLigne)
+                    afficherLigne('TRAIN', nomLigne)
+                }
+                var nbArrets = data.routes[0].legs[i].stops.length
+                for (let j = 0; j < nbArrets; j++) {
+                    var lat_a = data.routes[0].legs[i].stops[j].coordinates.lat
+                    var lng_a = data.routes[0].legs[i].stops[j].coordinates.lon
+                    placerPoint(lat_a, lng_a)
+                    if(data.routes[0].legs[i].vehicle_types[0] == 'bus'){
+                        bus.push([lat_a, lng_a])
+                    }
+                }
+                L.polyline(bus,{color: couleur, weight: 7}).addTo(map);
+                bus = []
+            }
+        }console.log('fini')
+    }
+})
 
