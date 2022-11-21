@@ -8,7 +8,7 @@ var polylines = []
 var loader = document.querySelector('.loader')
 
 var arret = L.icon({
-    iconUrl: './../img/arret3.png',
+    iconUrl: './img/arret3.png',
     iconSize:     [10, 10], // size of the icon
     iconAnchor:   [5, 5], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
@@ -16,22 +16,22 @@ var arret = L.icon({
 
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
 /*--------------------------*/
 
 //Pour tester de porte de mairie de velizy (tram) à porte de vanves (metro)
-var start = '48.7804063%2C2.191446'
-var end = '48.827676%2C2.3054796'
+const start = '48.7804063%2C2.191446';
+const end = '48.827676%2C2.3054796';
 
 //Pour tester de chez Eyléa à mon travail
-var start1 = '48.8022643%2C1.9696688'
-var end1 = '48.8780555%2C2.286804'
+const start1 = '48.8022643%2C1.9696688';
+const end1 = '48.8780555%2C2.286804';
 
 //Pour tester de rives gauche à rive droite
-var start2 = '48.8002576%2C2.129185'
-var end2 = '48.80952835083008%2C2.1350862979888916'
+const start2 = '48.8002576%2C2.129185';
+const end2 = '48.80952835083008%2C2.1350862979888916';
 
 //Pour tester de porte de versailles (tram) à l'IUT
 var start3 = '48.8324338%2C2.2879537'
