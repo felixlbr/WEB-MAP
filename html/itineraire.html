@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Page de connexion</title>
   <link rel="stylesheet" href="../css/connexion_style.css">
+  <link rel="stylesheet" href="../css/itineraire_style.css">
 </head>
 
 <body>
@@ -17,19 +18,40 @@
 
 <!-- MAIN -->
 <main>
-  <div id="connexion">
+  <div id="choixGare">
     <div class="#container">
-      <h2>Connectez-vous</h2>
+      <h2>Choix des gares</h2>
       <br>
-      <p>Authentifiez-vous avec Mon Identifiant SNCF</p>
+      <label for="departChoix">Gare de départ</label><br>
+      <input type="text" id="departChoix" name="depart">
       <br>
-      <label for="email">E-mail</label><br>
-      <input type="text" id="email" name="email">
-      <br><br>
-      <label for="mdp">Mot de passe</label><br>
-      <input type="text" id="mdp" name="motdepasse">
+      <img id="swipe" src="../img/swipe.png" alt="">
+      <br>
+      <label for="arriveeChoix">Gare d'arrivée</label><br>
+      <input type="text" id="arriveeChoix" name="arrivee">
       <br><br><br><br>
       <button>Valider</button>
+    </div>
+  </div>
+
+  <div id="itineraire" hidden>
+    <div class="wrapper">
+      <div class="one">
+        <div class="rectangle"><div class="rond1"></div><div class="rond2"></div></div>
+      </div>
+      <div class="two">
+        <h3>Gare de départ</h3>
+      </div>
+      <div class="three">
+        <h4>RER C</h4>
+        <p>30 minutes</p>
+      </div>
+      <div class="four">
+        <h3>Gare d'arrivée</h3>
+      </div>
+    </div>
+      <br><br><br><br>
+      <button>Retour</button>
     </div>
   </div>
 </main>

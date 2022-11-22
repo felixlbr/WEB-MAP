@@ -84,7 +84,7 @@ main{
     align-items: center;
     justify-content: center;
 }
-#connexion{
+#connexion, #choixGare {
     max-width: 800px;
     width: 60%;
     background-color: var(--white);
