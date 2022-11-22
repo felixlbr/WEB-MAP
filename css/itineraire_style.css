@@ -24,8 +24,7 @@
     grid-template-columns: 60px auto;
     grid-gap: 10px;
     grid-auto-rows: minmax(100px, auto);
-    height: 320px;
-    overflow: auto;
+
 }
 
 .one {
@@ -57,7 +56,10 @@
     margin-left: 50%;
     min-width: 25%;
 }
-
+#scrollable{
+    height: 320px;
+    overflow: auto;
+}
 #swipe{
     display: block;
     width: 8%;
