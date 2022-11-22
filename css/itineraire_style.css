@@ -24,6 +24,8 @@
     grid-template-columns: 60px auto;
     grid-gap: 10px;
     grid-auto-rows: minmax(100px, auto);
+    height: 320px;
+    overflow: auto;
 }
 
 .one {
