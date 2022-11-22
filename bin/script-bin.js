@@ -1,49 +1,35 @@
-/*--------------------------*/
-
 const map = L.map('map').setView([48.856614, 2.3522219], 11);
 const API_KEY = '4583082f2742ab2992a81c092de73c65'
 var tempStation
 var markers = []
 var polylines = []
 var loader = document.querySelector('.loader')
-
 var arret = L.icon({
-    iconUrl: './img/arret3.png',
+    iconUrl: './../img/arret3.png',
     iconSize:     [10, 10], // size of the icon
     iconAnchor:   [5, 5], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
-
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-/*--------------------------*/
+$("input[type='radio']").on('click change', function () {
+    loader.style.display = 'block'
+    var type = $(this).parent().attr("id").split(' ')
+    afficherGares(type[0], $(this).attr("id"))
+    afficherLigne(type[0], $(this).attr("id"))
+})
 
-//Pour tester de porte de mairie de velizy (tram) à porte de vanves (metro)
-const start = '48.7804063%2C2.191446';
-const end = '48.827676%2C2.3054796';
-
-//Pour tester de chez Eyléa à mon travail
-const start1 = '48.8022643%2C1.9696688';
-const end1 = '48.8780555%2C2.286804';
-
-//Pour tester de rives gauche à rive droite
-const start2 = '48.8002576%2C2.129185';
-const end2 = '48.80952835083008%2C2.1350862979888916';
-
-//Pour tester de porte de versailles (tram) à l'IUT
-var start3 = '48.8324338%2C2.2879537'
-var end3= '48.84297561645508%2C2.269261121749878'
-
-//Pour tester entre deux points impossibles (bug d'API)
-var start4 = '48.862725%2C2.287592'
-var end4 = '44.8879431%2C1.2161321'
-
-tracerTrajet(start, end)
-
-/*--------------------------*/
+$('.liste-type input').on('click change', function () {
+    $.each($('.liste-type input'),function(){
+        if ($(this).is(':checked'))
+            $('.ligne-' + $(this).attr("id")).show()
+        else
+            $('.ligne-' + $(this).attr("id")).hide()
+    });
+})
 
 /**
  * Nettoie la carte (retire les marker et les lignes)
@@ -68,6 +54,7 @@ function meteo (marker){
         async: false,
         url: "https://api.openweathermap.org/data/2.5/weather?lat=" + coord.lat + "&lon=" + coord.lng +"&lang=fr&appid=" + API_KEY,
         success: function(result){
+            loader.style.display = 'none'
             if(!marker.getPopup().getContent().includes("Température")){
                 JSON.stringify(result)
                 tempStation = Math.round(result.main.temp - 275) //merci Eyléa
@@ -79,10 +66,44 @@ function meteo (marker){
 }
 
 /**
- * Affiche une ligne
+ * Affiche les gares d'une ligne donnée
  * @param type type de la ligne (RER, TRAIN...)
  * @param ligne la ligne en question (C, N...)
  */
+function afficherGares(type, ligne){
+    clearMap()
+    $.ajax({
+        method: 'GET',
+        async: false,
+        url: "https://opendata.hauts-de-seine.fr/api/records/1.0/search/?dataset=gares-et-stations-du-reseau-ferre-dile-de-france-par-ligne&q=&rows=500&facet=mode&facet=indice_lig&refine.mode=" + type.toUpperCase().trim() +"&refine.indice_lig=" + ligne.toUpperCase().trim(),
+        success : function(data) {
+            JSON.stringify(data)
+            var existe = false
+            var lon, lat;
+            data.records.forEach(item => {
+                lat = item.fields.geo_point_2d[0]
+                lon = item.fields.geo_point_2d[1]
+                marker = L.marker([lat, lon], {icon: arret})
+                markers.push(marker)
+                marker.bindPopup('<b>' + item.fields.nom_zdl + '</b>')
+                marker.addTo(map)
+            })
+            if(!data.records.length) alert('La ligne ne semble pas exister')
+        }
+    })
+    markers.forEach((item, index) => {
+        item.addEventListener('click', function (){
+            loader.style.display = 'block'
+            meteo(item)
+            console.log(item.getLatLng().lat, item.getLatLng().lng)
+        })
+    })
+}
+
+/** Affichage des lignes
+ *  type : type de ligne (rer, metro, ter...)
+ *  ligne : le numéro de la ligne (en minuscule ou majuscule pour les lettres)
+ * */
 function afficherLigne(type, ligne){
     let cpt=0;
     let base = 0;
@@ -91,6 +112,7 @@ function afficherLigne(type, ligne){
             method: 'GET',
             url: "https://opendata.hauts-de-seine.fr/api/records/1.0/search/?dataset=traces-du-reseau-de-transport-ferre-dile-de-france&q=&facet=mode&facet=indice_lig&refine.mode="+ type.toUpperCase().trim() + "&refine.indice_lig=" + ligne.toUpperCase().trim() + "&rows=100&start=" + base*100,
             success : function(data){
+                loader.style.display = 'none'
                 cpt = data.parameters.rows;
                 tracerLigne(data);
             },
@@ -99,10 +121,9 @@ function afficherLigne(type, ligne){
     }while(cpt!==0);
 }
 
-/**
- * Trace une ligne sur la carte
- * @param data la donnée JSON récupérée de l'API
- */
+/** Traçage des lignes
+ *  data : résultat de l'API
+ * */
 function tracerLigne(data){
     var path
     for(let i=0; i<data.records.length;++i){
@@ -115,12 +136,6 @@ function tracerLigne(data){
     }
 }
 
-/**
- * Place un marker sur la carte avec son nom et la météo
- * @param lat latitude du point
- * @param lon longitude du point
- * @param nom nom du lieu
- */
 function placerPoint(lat, lon, nom){
     marker = L.marker([lat, lon], {icon: arret})
     markers.push(marker)
@@ -128,16 +143,14 @@ function placerPoint(lat, lon, nom){
     meteo(marker)
 }
 
-/**
- * Trace le trajet entre deux points
- * @param start coordonnées du départ du trajet
- * @param end coordonnées de l'arrivée du trajet
- */
+
+
 function tracerTrajet(start, end){
     $.ajax({
         method: "GET",
         url: "https://api.external.citymapper.com/api/1/directions/transit?Citymapper-Partner-Key=TW0S3Zfv5e6H5wdq4YIkBBFAs4tX3Zva&start=" + start + "&end=" + end + "&traveltime_types=transit",
         success: function(data) {
+            console.log(data)
             var route = 0
             var couleur = '#FFF'
             var nomLigne
@@ -156,32 +169,16 @@ function tracerTrajet(start, end){
                         else afficherLigne('METRO', nomLigne.charAt(1) + nomLigne.charAt(2))
                         placerArrets(data, route, i)
                     }
-                    else if (data.routes[route].legs[i].vehicle_types[0] == 'tram'){
-                        var nomLigne = data.routes[route].legs[i].services[0].name
-                        afficherLigne('TRAMWAY', nomLigne.charAt(1))
-                        placerArrets(data, route, i)
-                    }
                     else if (data.routes[route].legs[i].vehicle_types[0] == 'bus'){
                         couleur = data.routes[route].legs[i].services[0].color
                         placerArrets(data, route, i, couleur)
                     }
                 }
             }
-            loader.style.display = 'none'
-        },
-        error: function(){
-            alert('Aucun trajet trouvé entre les deux points. Il est peut-être trop tard où les deux points ne sont pas joignables en transport')
         }
     })
 }
 
-/**
- * Place arrêts d'une ligne (station de départ et d'arrivée) + trace le parcours d'un bus
- * @param data la donnée JSON récupérée de l'API
- * @param route la route choisie (0, 1, 2 ou 3)
- * @param i l'étape du trajet sur laquelle on veut les arrêts
- * @param couleur couleur de la ligne (pour le tracé du bus)
- */
 function placerArrets(data, route, i, couleur){
     nbArrets = data.routes[route].legs[i].stops.length
     var departLat = data.routes[route].legs[i].stops[0].coordinates.lat
@@ -202,3 +199,7 @@ function placerArrets(data, route, i, couleur){
         L.polyline(bus,{color: couleur, weight: 7}).addTo(map);
     }
 }
+
+var start = '48.8022643%2C1.9696688'
+var end = '48.8780555%2C2.286804'
+tracerTrajet(start, end)

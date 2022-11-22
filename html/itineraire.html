@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Page de connexion</title>
+  <link rel="stylesheet" href="../css/connexion_style.css">
+  <link rel="stylesheet" href="../css/itineraire_style.css">
+</head>
+
+<body>
+<!-- HEADER -->
+<header>
+  <div class="container">
+    <img src="../img/sncf_logo.png" alt="logo SNCF">
+    <h1>Mon espace</h1>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main>
+  <div id="choixGare">
+    <div class="#container">
+      <h2>Choix des gares</h2>
+      <br>
+      <label for="departChoix">Gare de départ</label><br>
+      <input type="text" id="departChoix" name="depart">
+      <br>
+      <img id="swipe" src="../img/swipe.png" alt="">
+      <br>
+      <label for="arriveeChoix">Gare d'arrivée</label><br>
+      <input type="text" id="arriveeChoix" name="arrivee">
+      <br><br><br><br>
+      <button>Valider</button>
+    </div>
+  </div>
+
+  <div id="itineraire" hidden>
+    <div class="wrapper">
+      <div class="one">
+        <div class="rectangle"><div class="rond1"></div><div class="rond2"></div></div>
+      </div>
+      <div class="two">
+        <h3>Gare de départ</h3>
+      </div>
+      <div class="three">
+        <h4>RER C</h4>
+        <p>30 minutes</p>
+      </div>
+      <div class="four">
+        <h3>Gare d'arrivée</h3>
+      </div>
+    </div>
+      <br><br><br><br>
+      <button>Retour</button>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <a href="https://tgvinoui.sncf/mentions-legales" target="_blank"><p>Mention légales</p></a>
+    <hr>
+    <a href="https://tgvinoui.sncf/conditions-generales" target="_blank"><p>Conditions générales</p></a>
+    <hr>
+    <a href="https://tgvinoui.sncf/cookies" target="_blank"><p>Cookies</p></a>
+    <hr>
+    <a href="https://tgvinoui.sncf/plan-du-site" target="_blank"><p>Plan du site</p></a>
+    <hr>
+    <a href="https://tgvinoui.sncf/accessibilite" target="_blank"><p>Accéssibilité</p></a>
+  </div>
+</footer>
+</body>
+</html>

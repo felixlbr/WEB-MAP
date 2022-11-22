@@ -1,9 +1,9 @@
 /* SETTINGS */
 :root{
-    /* Comment utiliser des variable ? 
-    *  écrire : 
-    *           color : var(--black); 
-    *  à la place de 
+    /* Comment utiliser des variable ?
+    *  écrire :
+    *           color : var(--black);
+    *  à la place de
     *           color : black;
     */
     --black : #000000;
@@ -84,7 +84,11 @@ main{
     align-items: center;
     justify-content: center;
 }
+<<<<<<< HEAD
 #connexion{
+=======
+#connexion, #choixGare {
+>>>>>>> origin/lab-hugo
     max-width: 800px;
     width: 60%;
     background-color: var(--white);
@@ -116,7 +120,11 @@ button{
     font-size: 1.5em;
     margin-left: auto;
     margin-right: auto;
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> origin/lab-hugo
 }
 /* FOOTER */
 footer{
