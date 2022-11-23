@@ -1,14 +1,16 @@
 /*--------------------------*/
 
-const map = L.map('map').setView([48.856614, 2.3522219], 11);
+const map = L.map('map').setView([48.86337661743164, 2.4466350078582764], 11);
 const API_KEY = '4583082f2742ab2992a81c092de73c65'
 var tempStation
 var markers = []
 var polylines = []
 var loader = document.querySelector('.loader')
+const MAX_GARES = 2000
+var villes = []
 
 var arret = L.icon({
-    iconUrl: './img/arret3.png',
+    iconUrl: '../img/arret3.png',
     iconSize:     [10, 10], // size of the icon
     iconAnchor:   [5, 5], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
@@ -40,8 +42,6 @@ var end3= '48.84297561645508%2C2.269261121749878'
 //Pour tester entre deux points impossibles (bug d'API)
 var start4 = '48.862725%2C2.287592'
 var end4 = '44.8879431%2C1.2161321'
-
-tracerTrajet(start, end)
 
 /*--------------------------*/
 
@@ -83,7 +83,7 @@ function meteo (marker){
  * @param type type de la ligne (RER, TRAIN...)
  * @param ligne la ligne en question (C, N...)
  */
-function afficherLigne(type, ligne){
+function afficherLigne(type, ligne, couleur){
     let cpt=0;
     let base = 0;
     do{
@@ -92,7 +92,7 @@ function afficherLigne(type, ligne){
             url: "https://opendata.hauts-de-seine.fr/api/records/1.0/search/?dataset=traces-du-reseau-de-transport-ferre-dile-de-france&q=&facet=mode&facet=indice_lig&refine.mode="+ type.toUpperCase().trim() + "&refine.indice_lig=" + ligne.toUpperCase().trim() + "&rows=100&start=" + base*100,
             success : function(data){
                 cpt = data.parameters.rows;
-                tracerLigne(data);
+                tracerLigne(data, couleur);
             },
         });
         ++ base;
@@ -103,13 +103,13 @@ function afficherLigne(type, ligne){
  * Trace une ligne sur la carte
  * @param data la donnée JSON récupérée de l'API
  */
-function tracerLigne(data){
+function tracerLigne(data, couleur){
     var path
     for(let i=0; i<data.records.length;++i){
         var tab=[];
         for(let j=0; j<data.records[i].fields.geo_shape.coordinates.length;++j){
             tab.push(data.records[i].fields.geo_shape.coordinates[j].reverse());
-            path = L.polyline(tab,{color: '#' + data.records[i].fields.colourweb_hexa, weight: 7}).addTo(map);
+            path = L.polyline(tab,{color: couleur, weight: 7}).addTo(map);
             polylines.push(path)
         }
     }
@@ -134,37 +134,64 @@ function placerPoint(lat, lon, nom){
  * @param end coordonnées de l'arrivée du trajet
  */
 function tracerTrajet(start, end){
+    loader.style.display = 'block'
     $.ajax({
         method: "GET",
         url: "https://api.external.citymapper.com/api/1/directions/transit?Citymapper-Partner-Key=TW0S3Zfv5e6H5wdq4YIkBBFAs4tX3Zva&start=" + start + "&end=" + end + "&traveltime_types=transit",
+        async: true,
         success: function(data) {
+            console.log(data)
             var route = 0
             var couleur = '#FFF'
-            var nomLigne
+            var nomLigne, mode, libelle
+            var noms = [2]
             for (let i = 0; i < data.routes[route].legs.length; i++) {
                 //Pour ne pas traiter les trajets à pied
                 if (data.routes[route].legs[i].travel_mode == 'transit') {
+                    couleur = data.routes[route].legs[i].services[0].color
                     if (data.routes[route].legs[i].vehicle_types[0] == 'rail') {
                         nomLigne = data.routes[route].legs[i].services[0].name.split(' ')
-                        if (nomLigne[0] == 'RER') afficherLigne('RER', nomLigne[1])
-                        else afficherLigne('TRAIN', nomLigne[0])
-                        placerArrets(data, route, i)
+                        if (nomLigne[0] == 'RER'){
+                            afficherLigne('RER', nomLigne[1], couleur)
+                            libelle = nomLigne[1]
+                            mode = 'RER '
+                            noms = placerArrets(data, route, i)
+                        }
+                        else {
+                            afficherLigne('TRAIN', nomLigne[0], couleur)
+                            libelle = nomLigne[0]
+                            mode = 'Train '
+                            noms = placerArrets(data, route, i)
+                        }
                     }
                     else if (data.routes[route].legs[i].vehicle_types[0] == 'metro'){
                         var nomLigne = data.routes[route].legs[i].services[0].name
-                        if(nomLigne.length == 2) afficherLigne('METRO', nomLigne.charAt(1))
-                        else afficherLigne('METRO', nomLigne.charAt(1) + nomLigne.charAt(2))
-                        placerArrets(data, route, i)
+                        if(nomLigne.length == 2){
+                            afficherLigne('METRO', nomLigne.charAt(1), couleur)
+                            mode = 'Metro '
+                            libelle = nomLigne.charAt(1)
+                            noms = placerArrets(data, route, i)
+                        }
+                        else{
+                            afficherLigne('METRO', nomLigne.charAt(1) + nomLigne.charAt(2), couleur)
+                            mode = 'Metro '
+                            libelle = nomLigne.charAt(1) + nomLigne.charAt(2)
+                            noms = placerArrets(data, route, i)
+                        }
                     }
                     else if (data.routes[route].legs[i].vehicle_types[0] == 'tram'){
                         var nomLigne = data.routes[route].legs[i].services[0].name
-                        afficherLigne('TRAMWAY', nomLigne.charAt(1))
-                        placerArrets(data, route, i)
+                        afficherLigne('TRAMWAY', nomLigne.charAt(1), couleur)
+                        libelle = nomLigne.charAt(1)
+                        mode = 'Tramway '
+                        noms = placerArrets(data, route, i)
                     }
                     else if (data.routes[route].legs[i].vehicle_types[0] == 'bus'){
-                        couleur = data.routes[route].legs[i].services[0].color
-                        placerArrets(data, route, i, couleur)
+                        libelle = nomLigne
+                        mode = 'Bus '
+                        noms = placerArrets(data, route, i, couleur)
                     }
+                    remplir(noms[1], mode, noms[2], libelle, couleur)
                 }
             }
             loader.style.display = 'none'
@@ -201,4 +228,52 @@ function placerArrets(data, route, i, couleur){
         }
         L.polyline(bus,{color: couleur, weight: 7}).addTo(map);
     }
+    var noms = [2]
+    noms.push(departNom)
+    noms.push(arriveeNom)
+    return noms
+}
+
+/**
+ * compare deux gares (alphabétiquement par le nom)
+ * @param a gare a
+ * @param b gare b
+ * @returns {number}
+ */
+function compare(a, b){
+    if(a.fields.nom_zdl < b.fields.nom_zdl) return -1
+    else if(a.fields.nom_zdl > b.fields.nom_zdl) return 1
+    return 0
+}
+
+/**
+ * Récupère toutes les gares pour les afficher dans les inputs pour choisir la gare de départ et celle d'arrivée
+ */
+function getGare(){
+    loader.style.display = 'block'
+    $.ajax({
+        method: "GET",
+        url: "https://opendata.hauts-de-seine.fr/api/records/1.0/search/?dataset=gares-et-stations-du-reseau-ferre-dile-de-france-par-ligne&q=&rows=" + MAX_GARES + "&facet=id_ref_lda&facet=idrefliga",
+        async: true,
+        success: function(data) {
+            console.log(data)
+            for (let i = 0; i < data.records.length; i++) {
+                villes.push(data.records[i])
+            }
+            villes.sort(compare)
+            for (let i = 0; i < villes.length - 1; i++) {
+                if(compare(villes[i], villes[i+1]) == 0){
+                    delete villes[i]
+                }
+            }
+            villes.forEach((item, index) => {
+                $('#list-gare-depart').append("<option value='" + villes[index].fields.nom_zdl + "'>")
+                $('#list-gare-arrivee').append("<option value='" + villes[index].fields.nom_zdl + "'>")
+            })
+            loader.style.display = 'none'
+        },
+        error: function(){
+            alert('Aucune gare trouvée')
+        }
+    })
 }
