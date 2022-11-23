@@ -181,12 +181,13 @@ function tracerTrajet(start, end){
                     }
                     else if (data.routes[route].legs[i].vehicle_types[0] == 'tram'){
                         var nomLigne = data.routes[route].legs[i].services[0].name
-                        afficherLigne('TRAMWAY', nomLigne.charAt(1), couleur)
-                        libelle = nomLigne.charAt(1)
+                        afficherLigne('TRAMWAY', nomLigne.charAt(1) + nomLigne.charAt(2), couleur)
+                        libelle = nomLigne
                         mode = 'Tramway '
                         noms = placerArrets(data, route, i)
                     }
                     else if (data.routes[route].legs[i].vehicle_types[0] == 'bus'){
+                        var nomLigne = data.routes[route].legs[i].services[0].name
                         libelle = nomLigne
                         mode = 'Bus '
                         noms = placerArrets(data, route, i, couleur)
@@ -226,7 +227,8 @@ function placerArrets(data, route, i, couleur){
             var lng = data.routes[route].legs[i].stops[j].coordinates.lon
             bus.push([lat, lng])
         }
-        L.polyline(bus,{color: couleur, weight: 7}).addTo(map);
+        var polyline = L.polyline(bus,{color: couleur, weight: 7}).addTo(map);
+        polylines.push(polyline)
     }
     var noms = [2]
     noms.push(departNom)
