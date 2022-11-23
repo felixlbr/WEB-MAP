@@ -4,7 +4,6 @@ window.onload = function(){
 
 let rotation = 0
 
-
 $('#valider').click(function () {
     $('#connexion').hide()
     $('#itineraire').show()
