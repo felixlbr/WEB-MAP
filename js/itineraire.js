@@ -30,6 +30,19 @@ $('#swipe').click(function(){
     $(this).css('transform', 'rotateY(' + rotation + 'deg)');
 })
 
+$(document).on("click", function (event) {
+    if ($(event.target).closest("#itineraire, header, footer, #connexion, #back").length === 0) {
+        $('#map').css('z-index', '1');
+        $('header, footer, #back').css('z-index', '2');
+        $('#back').show()
+    }
+});
+
+$('#back').click(function (){
+    $('#map').css('z-index', '-1');
+    $('#back').hide()
+})
+
 /**
  * Ajout dynamique du récapitulatif du trajet (div à droite quand le trajet est affiché)
  * @param gare_depart explicite
