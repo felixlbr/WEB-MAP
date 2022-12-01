@@ -5,8 +5,8 @@ window.onload = function(){
 let rotation = 0
 
 $('#valider').click(function () {
-    $('#connexion').hide()
-    $('#itineraire').show()
+    $('#itineraire').hide()
+    $('#chemin').show()
     let index = getIndex($('#departChoix').val())
     let coordonneesDepart = villes[index].fields.geo_point_2d
     index = getIndex($('#arriveeChoix').val())
@@ -15,8 +15,8 @@ $('#valider').click(function () {
 })
 
 $('#retour').click(function () {
-    $('#connexion').show()
-    $('#itineraire').hide()
+    $('#itineraire').show()
+    $('#chemin').hide()
     $('.loader').hide()
     clearMap()
     document.getElementById("scrollable").innerHTML = ''
@@ -31,7 +31,7 @@ $('#swipe').click(function(){
 })
 
 $(document).on("click", function (event) {
-    if ($(event.target).closest("#itineraire, header, footer, #connexion, #back").length === 0) {
+    if ($(event.target).closest("#chemin, header, footer, #itineraire, #back").length === 0) {
         $('#map').css('z-index', '1');
         $('header, footer, #back').css('z-index', '2');
         $('#back').show()

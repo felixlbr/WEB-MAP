@@ -75,13 +75,16 @@ header>.container>h1{
 main{
     position : relative;
     height: 100%;
-    background-image: linear-gradient(white, white), url(../img/bg_sncf.jpg);
+    /*background-image: linear-gradient(white, white), url(../img/bg_sncf.jpg);*/
     background-blend-mode: saturation;
     background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+main:has(> div#connexion) {
+    background-image: linear-gradient(white, white), url(../img/bg_sncf.jpg);
 }
 #map{
     position: absolute;
@@ -106,7 +109,7 @@ main{
     height: 12%;
     width: 10%;
 }
-#connexion, #choixGare {
+#connexion, #choixGare, #itineraire {
     max-width: 800px;
     width: 60%;
     background-color: var(--white);
@@ -114,7 +117,7 @@ main{
     padding: 50px;
     padding-left: 100px;padding-right: 100px;
 }
-#connexion h2, #connexion p{
+#connexion h2, #connexion p, #itineraire h2, #itineraire p{
     text-align: center;
 }
 input{

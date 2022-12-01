@@ -49,7 +49,7 @@
     align-self: end;
 }
 
-#itineraire{
+#chemin{
     background-color: var(--white);
     border-radius: 25px;
     padding: 47px;
@@ -71,7 +71,7 @@
 
  /* A REVOIR */
 @media screen and (max-width: 710px) {
-    #itineraire{
+    #chemin{
         background-color: var(--white);
         border-radius: 25px;
         padding: 47px;
