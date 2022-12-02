@@ -86,6 +86,11 @@ main{
 main:has(> div#connexion) {
     background-image: linear-gradient(white, white), url(../img/bg_sncf.jpg);
 }
+
+main:has(> div#inscription) {
+    background-image: linear-gradient(white, white), url(../img/bg_sncf.jpg);
+}
+
 #map{
     position: absolute;
     height: 100%;
@@ -109,7 +114,7 @@ main:has(> div#connexion) {
     height: 12%;
     width: 10%;
 }
-#connexion, #choixGare, #itineraire {
+#connexion, #inscription, #choixGare, #itineraire {
     max-width: 800px;
     width: 60%;
     background-color: var(--white);
@@ -117,7 +122,7 @@ main:has(> div#connexion) {
     padding: 50px;
     padding-left: 100px;padding-right: 100px;
 }
-#connexion h2, #connexion p, #itineraire h2, #itineraire p{
+#connexion h2, #connexion p, #itineraire h2, #itineraire p, #inscription h2, #inscription p{
     text-align: center;
 }
 input{
