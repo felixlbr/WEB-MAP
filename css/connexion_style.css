@@ -19,9 +19,10 @@ h1,h2,h3{
 }
 a{
     text-decoration: none;
-    color : var(--black)
-
+    color : var(--black);
+    margin: auto;
 }
+
 h1{
     font-size: 3em;
 }
@@ -134,7 +135,7 @@ input{
     padding: 10px;
     border-radius: 10px;
 }
-button{
+button, button[type="submit"]{
     display: block;
     width: 100%;
     padding: 10px;
@@ -146,6 +147,10 @@ button{
     font-size: 1.5em;
     margin-left: auto;
     margin-right: auto;
+}
+button[type="submit"]{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* FOOTER */
