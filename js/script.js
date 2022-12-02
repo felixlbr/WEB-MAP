@@ -104,7 +104,9 @@ function afficherLigne(type, ligne, couleur){
  * @param data la donnée JSON récupérée de l'API
  */
 function tracerLigne(data, couleur){
-    var path
+    console.log(data);
+
+    var path;
     for(let i=0; i<data.records.length;++i){
         var tab=[];
         for(let j=0; j<data.records[i].fields.geo_shape.coordinates.length;++j){
@@ -113,6 +115,8 @@ function tracerLigne(data, couleur){
             polylines.push(path)
         }
     }
+    placerPoint(48.838364048935155, 2.269785380384059)
+    placerPoint(48.78739023737062, 2.044621988534177)
 }
 
 /**
@@ -216,6 +220,8 @@ function placerArrets(data, route, i, couleur){
     var departLon = data.routes[route].legs[i].stops[0].coordinates.lon
     var arriveeLat = data.routes[route].legs[i].stops[nbArrets - 1].coordinates.lat
     var arriveeLon = data.routes[route].legs[i].stops[nbArrets - 1].coordinates.lon
+    console.log(departLon,departLat);
+    console.log(arriveeLon,arriveeLat);
     var departNom = data.routes[route].legs[i].stops[0].name
     var arriveeNom = data.routes[route].legs[i].stops[nbArrets - 1].name
     placerPoint(departLat, departLon, departNom)
