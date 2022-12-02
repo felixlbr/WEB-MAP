@@ -15,6 +15,8 @@
 <main>
     <div id="connexion">
         <div class="container">
+            <?php include_once('./vue/ident.php'); ?>
+            <!--
             <h2>Connectez-vous</h2>
             <br>
             <p>Authentifiez-vous avec Mon Identifiant SNCF</p>
@@ -26,6 +28,8 @@
             <input type="password" id="mdp" name="motdepasse">
             <br><br><br><br>
             <button>Valider</button>
+            -->
+            <?php  ?>
         </div>
     </div>
 </main>

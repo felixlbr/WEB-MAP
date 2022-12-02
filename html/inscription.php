@@ -15,6 +15,8 @@
 <main>
     <div id="inscription">
         <div class="container">
+            <?php include_once('./vue/inscri.php'); ?>
+            <!--
             <h2>Inscrivez-vous</h2>
             <br>
             <p>Informations sur vous</p>
@@ -32,6 +34,7 @@
             <input type="password" id="mdp" name="motdepasse">
             <br><br><br><br>
             <button>Valider</button>
+            -->
         </div>
     </div>
 </main>
