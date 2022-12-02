@@ -10,7 +10,7 @@ const MAX_GARES = 2000
 var villes = []
 
 var arret = L.icon({
-    iconUrl: '../img/arret3.png',
+    iconUrl: 'img/arret3.png',
     iconSize:     [10, 10], // size of the icon
     iconAnchor:   [5, 5], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
