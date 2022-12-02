@@ -7,19 +7,19 @@
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
-  <link rel="stylesheet" href="../css/connexion_style.css">
-  <link rel="stylesheet" href="../css/itineraire_style.css">
+  <link rel="stylesheet" href="css/connexion_style.css">
+  <link rel="stylesheet" href="css/itineraire_style.css">
 </head>
 
 <body>
 <!-- HEADER -->
 <header></header>
 
-<img src="../img/loader.gif" class="loader" alt="" hidden>
+<img src="img/loader.gif" class="loader" alt="" hidden>
 
 <div id="map"></div>
 
-<img id="back" src="../img/back_arrow_14429.png" alt="">
+<img id="back" src="img/back_arrow_14429.png" alt="">
 
 <!-- MAIN -->
 <main>
@@ -30,7 +30,7 @@
       <input list="list-gare-depart" id="departChoix" name="departChoix">
       <datalist id="list-gare-depart"></datalist>
       <br>
-      <img id="swipe" src="../img/swipe.png" alt="">
+      <img id="swipe" src="img/swipe.png" alt="">
       <label for="arriveeChoix">Choix de la gare de départ :</label>
       <input list="list-gare-arrivee" id="arriveeChoix" name="arriveeChoix">
       <datalist id="list-gare-arrivee"></datalist>
@@ -49,9 +49,9 @@
 
 <!-- FOOTER -->
 <footer></footer>
-<script src="../js/script.js"></script>
-<script src="../js/headerFooter.js"></script>
-<script src="../js/itineraire.js"></script>
+<script src="js/script.js"></script>
+<script src="js/headerFooter.js"></script>
+<script src="js/itineraire.js"></script>
 
 </body>
 </html>
