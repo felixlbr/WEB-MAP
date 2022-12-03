@@ -1,3 +1,10 @@
+<?php
+session_start();
+if($_SESSION['profil'] == null){
+  header("Location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,7 +20,9 @@
 
 <body>
 <!-- HEADER -->
-<header></header>
+<header>
+  <a href="php/logout.php">déconnexion</a>
+</header>
 
 <img src="img/loader.gif" class="loader" alt="" hidden>
 

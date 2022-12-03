@@ -17,7 +17,7 @@ function inscri($prenom,$email,$pwd){
     $my_Insert_Statement->bindParam(':email', $email);
     $my_Insert_Statement->bindParam(':pwd', $pwd);
     if ($my_Insert_Statement->execute()) {
-        header("Location: ../itineraire.php");
+        header("Location: ../index.php");
     } else {
         header("Location: ../inscription.php");
     }
