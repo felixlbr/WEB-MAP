@@ -13,6 +13,10 @@
 
 <!-- MAIN -->
 <main>
+    <div class="alert-box" hidden>
+        <img src="./img/errorLogin.png" class="alert-img" alt="">
+        <p class="alert-msg"></p>
+    </div>
     <div id="inscription">
         <div class="container">
             <h2>Inscrivez-vous</h2>
@@ -22,8 +26,8 @@
             <form action= "php/envoieInscription.php" method= "post">
                 Prénom : <input name="prenom" value="<?php echo $prenom="" ?>" /> <br/>
                 E-mail : <input type="email" name="email" value="<?php echo $email=""?>" /> <br/>
-                Mot de passe : <input type="password" name="pwd" value="<?php echo $pwd="" ?>" /> <br/>
-                <button type="submit">Valider</button>
+                Mot de passe : <input type="password" class="pwd" name="pwd" value="<?php echo $pwd="" ?>" /> <br/>
+                <p class ="submit">Valider</p>
             </form>
             <p><a href="index.php">J'ai déjà un compte</a></p>
         </div>
@@ -34,6 +38,7 @@
 <footer></footer>
 
 <script src="js/headerFooter.js"></script>
+<script src="js/erreurLogin.js"></script>
 
 </body>
 </html>
