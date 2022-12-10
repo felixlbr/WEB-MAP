@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Page d'inscription</title>
+    <link rel="icon" href="img/logo.ico" />
     <link rel="stylesheet" href="css/connexion_style.css">
 </head>
 

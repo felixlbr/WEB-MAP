@@ -9,7 +9,8 @@ if($_SESSION['profil'] == null){
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Page itineraire</title>
+  <title>Page itinéraire</title>
+  <link rel="icon" href="img/logo.ico" />
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
