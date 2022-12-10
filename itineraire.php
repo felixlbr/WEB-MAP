@@ -20,9 +20,19 @@ if($_SESSION['profil'] == null){
 
 <body>
 <!-- HEADER -->
-<header>
-  <a href="php/logout.php">déconnexion</a>
-</header>
+<header></header>
+
+<script>
+document.querySelector('header').innerHTML = `
+      <div class="container">
+          <div class="containerItineraire">
+            <a href="php/logout.php">Deconnexion</a>
+          </div>
+          <img src="img/sncf_logo.png" alt="logo SNCF">
+          <h1>Mon espace</h1>
+      </div>
+  `
+</script>
 
 <img src="img/loader.gif" class="loader" alt="" hidden>
 
@@ -59,7 +69,6 @@ if($_SESSION['profil'] == null){
 <!-- FOOTER -->
 <footer></footer>
 <script src="js/script.js"></script>
-<script src="js/headerFooter.js"></script>
 <script src="js/itineraire.js"></script>
 
 </body>
