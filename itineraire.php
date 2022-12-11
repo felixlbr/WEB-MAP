@@ -9,6 +9,7 @@ if($_SESSION['profil'] == null){
 <html lang="fr">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Page itinéraire</title>
   <link rel="icon" href="img/logo.ico" />
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.js"></script>
