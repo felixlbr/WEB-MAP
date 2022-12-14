@@ -1,8 +1,17 @@
+<?php
+session_start();
+if($_SESSION['profil'] == null){
+  header("Location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Page itineraire</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Page itinéraire</title>
+  <link rel="icon" href="img/logo.ico" />
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
@@ -14,6 +23,18 @@
 <body>
 <!-- HEADER -->
 <header></header>
+
+<script>
+document.querySelector('header').innerHTML = `
+      <div class="container">
+          <div class="containerItineraire">
+            <a href="php/logout.php">Deconnexion</a>
+          </div>
+          <img src="img/sncf_logo.png" alt="logo SNCF">
+          <h1>Mon espace</h1>
+      </div>
+  `
+</script>
 
 <img src="img/loader.gif" class="loader" alt="" hidden>
 
@@ -50,7 +71,6 @@
 <!-- FOOTER -->
 <footer></footer>
 <script src="js/script.js"></script>
-<script src="js/headerFooter.js"></script>
 <script src="js/itineraire.js"></script>
 
 </body>

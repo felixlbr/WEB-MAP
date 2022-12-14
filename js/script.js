@@ -185,7 +185,7 @@ function tracerTrajet(start, end){
                     }
                     else if (data.routes[route].legs[i].vehicle_types[0] == 'tram'){
                         var nomLigne = data.routes[route].legs[i].services[0].name
-                        afficherLigne('TRAMWAY', nomLigne.charAt(1) + nomLigne.charAt(2), couleur)
+                        afficherLigne('TRAMWAY', nomLigne.charAt(1), couleur)
                         libelle = nomLigne
                         mode = 'Tramway '
                         noms = placerArrets(data, route, i)
