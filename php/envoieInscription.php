@@ -3,7 +3,7 @@ $prenom= isset($_POST['prenom'])?($_POST['prenom']):'';
 $email= isset($_POST['email'])?($_POST['email']):'';
 $pwd= isset($_POST['pwd'])?($_POST['pwd']):'';
 $msg='';
-if (count($_POST)==0) require("../inscription");
+if (count($_POST)==0) require("../inscription.php");
 else {
     $profil = array();
     inscri($prenom,$email,$pwd);
