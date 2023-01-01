@@ -22,19 +22,17 @@ if($_SESSION['profil'] == null){
 
 <body>
 <!-- HEADER -->
-<header></header>
+<header>
+  <div class="container">
+   <div class="containerItineraire">
+     <a href="php/logout.php">Deconnexion</a>
+   </div>
+   <img src="img/sncf_logo.png" alt="logo SNCF">
+   <h1><a href="php/envoieProfile.php">Mon espace</a></h1>
+  </div>
+</header>
 
-<script>
-document.querySelector('header').innerHTML = `
-      <div class="container">
-          <div class="containerItineraire">
-            <a href="php/logout.php">Deconnexion</a>
-          </div>
-          <img src="img/sncf_logo.png" alt="logo SNCF">
-          <h1>Mon espace</h1>
-      </div>
-  `
-</script>
+
 
 <img src="img/loader.gif" class="loader" alt="" hidden>
 

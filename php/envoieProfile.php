@@ -13,7 +13,7 @@ require("../profile.php");
 function recup_infos($email){
     require("./connect.php");
 
-    $sql = "SELECT * FROM utilisateur WHERE email=:email";
+    $sql = "SELECT * FROM user WHERE email=:email";
     $commande = $my_Db_Connection->prepare($sql);
     $commande->bindParam(':email', $email);
 
