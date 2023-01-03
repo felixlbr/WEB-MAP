@@ -6,6 +6,25 @@ if($_SESSION['profil'] == null){
 else if($_SESSION['profil']['email'] == "admin@admin"){
   header("Location: http://82.165.187.129/");
 }
+else{
+  require("./php/connect.php");
+    $sql = "SELECT * FROM user WHERE email=:email";
+    $commande = $my_Db_Connection->prepare($sql);
+    $commande->bindParam(':email', $_SESSION['profil']['email']);
+    try{
+        $bool = $commande->execute();
+        if($bool){
+            $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
+    catch(PDOException $e){
+        echo utf8_encode("Echec du select : " . $e->getMessage() . "\n");
+        die();
+    }
+    $prenom=$resultat[0]['prenom'];
+    $home=$resultat[0]['home'];
+    $work=$resultat[0]['work'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,13 +46,16 @@ else if($_SESSION['profil']['email'] == "admin@admin"){
 <!-- HEADER -->
 <header>
   <div class="container">
-   <div class="containerItineraire">
-     <a href="php/logout.php">Deconnexion</a>
-   </div>
-   <img src="img/sncf_logo.png" alt="logo SNCF">
-   <h1><a href="php/envoieProfile.php">Mon espace</a></h1>
+    <div class="containerItineraire">
+      <div class="containerMenu">
+        <h3 id="nom"><?php echo $prenom ?></h3>
+        <h3 id="prof"><a href="php/envoieProfile.php">Profil</a></h3>
+        <a id="deco" href="php/logout.php">Deconnexion</a>
+      </div>
+    </div>
+     <img src="img/sncf_logo.png" alt="logo SNCF">
+     <h1>Mon Itineraire</h1>
   </div>
-
 </header>
 
 
@@ -50,13 +72,16 @@ else if($_SESSION['profil']['email'] == "admin@admin"){
     <div class="container">
       <h2>Choix des gares</h2>
       <label for="departChoix">Choix de la gare d'arrivée :</label>
-      <input list="list-gare-depart" id="departChoix" name="departChoix">
-      <datalist id="list-gare-depart"></datalist>
+      <input list="list-gare-arrivee" id="departChoix" name="departChoix">
+      
       <br>
       <img id="swipe" src="img/swipe.png" alt="">
       <label for="arriveeChoix">Choix de la gare de départ :</label>
       <input list="list-gare-arrivee" id="arriveeChoix" name="arriveeChoix">
-      <datalist id="list-gare-arrivee"></datalist>
+      <datalist id="list-gare-arrivee">
+          <option value="<?php echo $home ?>">Home</option>
+          <option value="<?php echo $work ?>">Work</option>
+        </datalist><br/>
       <br><br><br><br>
       <button id="valider">Valider</button>
     </div>

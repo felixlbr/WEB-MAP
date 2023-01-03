@@ -20,7 +20,6 @@ h1,h2,h3{
 a{
     text-decoration: none;
     color : var(--black);
-    margin: auto;
 }
 
 h1{
@@ -64,8 +63,14 @@ header>.container{
     flex-direction: row;
     justify-content: space-around;*/
 }
-header>.containerItineraire{
-    display: block;
+header>.container>.containerItineraire{
+    display : grid;
+    grid-template-columns: 1fr 2fr;
+}
+header .containerMenu{
+    grid-column: 2;
+    display: flex;
+    justify-content: space-around;
 }
 header>.container>img{
     height: 85px;
@@ -77,7 +82,6 @@ header>.container>h1{
     justify-self: end;
     align-self: center;
 }
-
 /* MAIN */
 main{
     position : relative;

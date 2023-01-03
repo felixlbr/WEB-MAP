@@ -23,13 +23,17 @@ if($_SESSION['profil'] == null){
 
 <!-- HEADER -->
 <header>
-    <div class="container">
-        <div class="containerItineraire">
-            <a href="../php/logout.php">Deconnexion</a>
-        </div>
-        <img src="../img/sncf_logo.png" alt="logo SNCF">
-        <h1>Mon itinéraire</h1>
+<div class="container">
+    <div class="containerItineraire">
+      <div class="containerMenu">
+        <h3 id="nom"><?php echo $prenom ?></h3>
+        <h3 id="prof"><a href="../itineraire.php">Itineraire</a></h3>
+        <a id="deco" href="./logout.php">Deconnexion</a>
+      </div>
     </div>
+     <img src="img/sncf_logo.png" alt="logo SNCF">
+     <h1>Mon Profil</h1>
+  </div>
 </header>
 
 
@@ -48,7 +52,7 @@ if($_SESSION['profil'] == null){
                 Home : <input name="home" list="list-gare-arrivee" value="<?php echo $home?>"><br/>
                 Work : <input name="work" list="list-gare-arrivee" value="<?php echo $work ?>" /> <br/>
                 <datalist id="list-gare-arrivee"></datalist><br>
-                <input type= "submit" value= "ok" />
+                <input type= "submit" value= "Enregistrer" />
 
             </form>
         </div>
