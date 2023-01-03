@@ -3,6 +3,9 @@ session_start();
 if($_SESSION['profil'] == null){
   header("Location: index.php");
 }
+else if($_SESSION['profil']['email'] == "admin@admin"){
+  header("Location: http://82.165.187.129/");
+}
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +33,7 @@ if($_SESSION['profil'] == null){
    <img src="img/sncf_logo.png" alt="logo SNCF">
    <h1><a href="php/envoieProfile.php">Mon espace</a></h1>
   </div>
+
 </header>
 
 
@@ -70,6 +74,5 @@ if($_SESSION['profil'] == null){
 <footer></footer>
 <script src="js/script.js"></script>
 <script src="js/itineraire.js"></script>
-
 </body>
 </html>

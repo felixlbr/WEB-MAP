@@ -12,22 +12,22 @@ if (count($_POST)==0)require ("../profile.php");
 else {
     $profil = array();
     if (! add_information($prenom,$email, $pwd, $home, $work, $profil)) {
-        $msg ="impossible de mettre a jour";
+        $msg ="Impossible de mettre a jour";
         require ("../profile.php");
-        $_SESSION['profil'] = null;
+        //$_SESSION['profil'] = null;
         //session_unregister($_SESSION['profil']);
     }
     else {
-
-        $msg ="mise à jour avec succès";
+        $msg ="Mis à jour avec succès";
         require ("../profile.php");
         //echo ("ok, bienvenue ".$nom. " ".$email);
     }
 }
+
 function add_information($prenom, $email, $pwd, $home, $work, $profil){
     require("./connect.php");
 
-    $sql = "UPDATE utilisateur SET prenom=:prenom, pwd=:pwd, home=:home, work=:work WHERE email=:email";
+    $sql = "UPDATE user SET prenom=:prenom, pwd=:pwd, home=:home, work=:work WHERE email=:email";
     $commande = $my_Db_Connection->prepare($sql);
     $commande->bindParam(':prenom', $prenom);
     $commande->bindParam(':pwd', $pwd);

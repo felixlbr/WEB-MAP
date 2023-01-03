@@ -11,7 +11,12 @@
 <body>
 
 <!-- HEADER -->
-<header></header>
+<header>
+    <div class="container">
+        <img src="../img/sncf_logo.png" alt="logo SNCF">
+        <h1>Mon espace</h1>
+    </div>
+</header>
 
 <!-- MAIN -->
 <main>
@@ -39,7 +44,7 @@
 <!-- FOOTER -->
 <footer></footer>
 
-<script src="js/headerFooter.js"></script>
+<script src="js/footer.js"></script>
 <script src="js/erreurLogin.js"></script>
 
 </body>

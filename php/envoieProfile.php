@@ -2,15 +2,19 @@
 session_start();
 
 $msg='';
-$resultat = recup_infos($_SESSION['profil']['email']);
-$prenom = $resultat['prenom'];
-$email = $resultat['email'];
-$pwd = $resultat['pwd'];
-$home = $resultat['home'];
-$work = $resultat['work'];
+$profil = array();
+recup_infos($_SESSION['profil']['email'], $profil);
+
+$prenom = $profil['prenom'];
+$email = $profil['email'];
+$pwd = $profil['pwd'];
+$home = $profil['home'];
+$work = $profil['work'];
+
+$_SESSION['profil'] = $profil;
 require("../profile.php");
 
-function recup_infos($email){
+function recup_infos($email, &$profil=array()){
     require("./connect.php");
 
     $sql = "SELECT * FROM user WHERE email=:email";
@@ -27,7 +31,7 @@ function recup_infos($email){
         echo utf8_encode("Echec du select : " . $e->getMessage() . "\n");
         die();
     }
-    return $resultat[0];
+    $profil=$resultat[0];
 }
 
 ?>
