@@ -3,9 +3,6 @@ session_start();
 if($_SESSION['profil'] == null){
   header("Location: index.php");
 }
-else if($_SESSION['profil']['email'] == "admin@admin"){
-  header("Location: http://82.165.187.129/");
-}
 else{
   require("./php/connect.php");
     $sql = "SELECT * FROM user WHERE email=:email";
@@ -21,9 +18,14 @@ else{
         echo utf8_encode("Echec du select : " . $e->getMessage() . "\n");
         die();
     }
-    $prenom=$resultat[0]['prenom'];
-    $home=$resultat[0]['home'];
-    $work=$resultat[0]['work'];
+    if($resultat[0]['roles'] == 1){
+      header("Location: http://82.165.187.129/");
+    }
+    else{
+      $prenom=$resultat[0]['prenom'];
+      $home=$resultat[0]['home'];
+      $work=$resultat[0]['work'];
+    }
 }
 ?>
 
