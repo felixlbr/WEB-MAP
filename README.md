@@ -1,18 +1,33 @@
 # WEB-MAP - [Félix LIBURSKI](https://github.com/felixlbr), [Hugo PEREIRA](https://github.com/tigrou23) & François PEUCH (novembre - janvier 2023)
-<div align="justify">Voici mon troisième projet de programmation mais mon premier en Java. La développement orienté objet est très différent de de l'approche en C ou C++ mais 'adaptation à ce langage n'a pas été difficile. Nous sommes très satisfait de notre projet puisqu'il a passé tous les tests et que nous avons un jeu auquel nous pouvons jouer.</div>
+<div align="justify">
+	Dans ce projet universitaire, nous avons utilisé des APIs pour tracer et indiquer un itinéraire en temps réel entre deux gares d'Île-de-France.</div>
 
 ## <center>Table of Contents </center>
-
-* [Introduction](#chapter1)
-* [Structure du programme](#chapter2)
-	* [La classe Carte](#section2_1)
+* [Prérequis pour pouvoir utiliser correctement notre site](#chapter1)
+* 	* [Cross-origin resource sharing](#section2_1)
+* [Fonctionnalités détaillées](#chapter1)
+* 	* [La classe Carte](#section2_1)
+	* [La classe Paquet](#section2_2)
+	* [La classe Player](#section2_3)
+	* [La classe Plateau](#section2_4)
+* [Les APIs utilisées](#chapter1)
+* 	* [La classe Carte](#section2_1)
+	* [La classe Paquet](#section2_2)
+	* [La classe Player](#section2_3)
+	* [La classe Plateau](#section2_4)
+* [Structure du projet](#chapter1)
+*	* [La classe Carte](#section2_1)
 	* [La classe Paquet](#section2_2)
 	* [La classe Player](#section2_3)
 	* [La classe Plateau](#section2_4)
 	* [La classe Game](#section2_5)
-* [Tests unitaires](#chapter3)
-* [Bilan du projet](#chapter4)
-
+* [Architecture](#chapter1)
+*	* [La classe Carte](#section2_1)
+	* [La classe Paquet](#section2_2)
+	* [La classe Player](#section2_3)
+	* [La classe Plateau](#section2_4)
+	* [La classe Game](#section2_5)
+	
 ## Introduction <a class="anchor" id="chapter1"></a>
 <div align="justify">Le projet consiste à reproduire le jeu du 6 qui prend tout en l’adaptant
 aux attentes du sujet. Notre programme est développé en langage JAVA. Nous avons utilisé l’IDE Eclipse pour développer ce programme. Ce dernier est encodé en ISO-8859-1 et les retours à la ligne sont ceux de Windows. Un package (util) nous a été distribué avec le sujet qui contient deux classes JAVA. Ces classes nous serviront à faire Pause et ClearScreen quand notre application sera exécutée. Ces deux méthodes servent à attendre une entrée clavier pour poursuivre le jeu et à effacer la console où le jeu est lancé.</div>
