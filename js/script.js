@@ -115,8 +115,6 @@ function tracerLigne(data, couleur){
             polylines.push(path)
         }
     }
-    placerPoint(48.838364048935155, 2.269785380384059)
-    placerPoint(48.78739023737062, 2.044621988534177)
 }
 
 /**
