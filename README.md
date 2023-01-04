@@ -1,4 +1,4 @@
-# WEB-MAP - Félix (LIBURSKI)[https://github.com/felixlbr] & Hugo (PEREIRA)[] & François (PEUCH)[] (novembre - janvier 2023)
+# WEB-MAP - Félix [LIBURSKI](https://github.com/felixlbr) & Hugo (PEREIRA)[] & François (PEUCH)[] (novembre - janvier 2023)
 <div align="justify">Voici mon troisième projet de programmation mais mon premier en Java. La développement orienté objet est très différent de de l'approche en C ou C++ mais 'adaptation à ce langage n'a pas été difficile. Nous sommes très satisfait de notre projet puisqu'il a passé tous les tests et que nous avons un jeu auquel nous pouvons jouer.</div>
 
 ## <center>Table of Contents </center>
