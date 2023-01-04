@@ -15,7 +15,7 @@ if($_SESSION['profil'] == null){
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
-    <link rel="icon" href="img/logo.ico" />
+    <link rel="icon" href="../img/logo.ico" />
     <link rel="stylesheet" href="../css/connexion_style.css">
     <link rel="stylesheet" href="../css/itineraire_style.css">
 </head>
@@ -31,7 +31,7 @@ if($_SESSION['profil'] == null){
         <a id="deco" href="./logout.php">Deconnexion</a>
       </div>
     </div>
-     <img src="img/sncf_logo.png" alt="logo SNCF">
+     <img src="../img/sncf_logo.png" alt="logo SNCF">
      <h1>Mon Profil</h1>
   </div>
 </header>
@@ -52,7 +52,7 @@ if($_SESSION['profil'] == null){
                 Home : <input name="home" list="list-gare-arrivee" value="<?php echo $home?>"><br/>
                 Work : <input name="work" list="list-gare-arrivee" value="<?php echo $work ?>" /> <br/>
                 <datalist id="list-gare-arrivee"></datalist><br>
-                <input type= "submit" value= "Enregistrer" />
+                <input class="submit" type= "submit" value= "Enregistrer" />
 
             </form>
         </div>
