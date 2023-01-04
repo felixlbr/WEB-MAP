@@ -19,12 +19,13 @@ h1,h2,h3{
 }
 a{
     text-decoration: none;
-    color : var(--black)
-
+    color : var(--black);
 }
+
 h1{
     font-size: 3em;
 }
+
 h2{
     font-size : 2em;
 }
@@ -44,11 +45,13 @@ body{
 
 /* HEADER */
 header{
-    height: 175px;
+    height: 125px;
     background-color: var(--white);
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 header>.container{
     display: grid;
@@ -60,6 +63,15 @@ header>.container{
     flex-direction: row;
     justify-content: space-around;*/
 }
+header>.container>.containerItineraire{
+    display : grid;
+    grid-template-columns: 1fr 2fr;
+}
+header .containerMenu{
+    grid-column: 2;
+    display: flex;
+    justify-content: space-around;
+}
 header>.container>img{
     height: 85px;
     grid-column: 1;
@@ -70,7 +82,6 @@ header>.container>h1{
     justify-self: end;
     align-self: center;
 }
-
 /* MAIN */
 main{
     position : relative;
@@ -86,6 +97,11 @@ main{
 main:has(> div#connexion) {
     background-image: linear-gradient(white, white), url(../img/bg_sncf.jpg);
 }
+
+main:has(> div#inscription) {
+    background-image: linear-gradient(white, white), url(../img/bg_sncf.jpg);
+}
+
 #map{
     position: absolute;
     height: 100%;
@@ -109,15 +125,16 @@ main:has(> div#connexion) {
     height: 12%;
     width: 10%;
 }
-#connexion, #choixGare, #itineraire {
+#connexion, #inscription, #choixGare, #itineraire {
     max-width: 800px;
     width: 60%;
     background-color: var(--white);
     border-radius: 25px;
     padding: 50px;
     padding-left: 100px;padding-right: 100px;
+    margin-top: 10px;margin-bottom: 10px;
 }
-#connexion h2, #connexion p, #itineraire h2, #itineraire p{
+#connexion h2, #connexion p, #itineraire h2, #itineraire p, #inscription h2, #inscription p{
     text-align: center;
 }
 input{
@@ -129,7 +146,7 @@ input{
     padding: 10px;
     border-radius: 10px;
 }
-button{
+button, .submit{
     display: block;
     width: 100%;
     padding: 10px;
@@ -141,6 +158,45 @@ button{
     font-size: 1.5em;
     margin-left: auto;
     margin-right: auto;
+}
+.submit{
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.alert-box{
+    width: 300px;
+    min-height: 150px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 100px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 1s;
+    z-index: 2;
+}
+.alert-img{
+    display: block;
+    margin: 10px auto 20px;
+    height: 60px;
+}
+.alert-msg{
+    color: #e24c4b;
+    font-size: 20px;
+    text-transform: capitalize;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 500;
+}
+.alert-box.show{
+    opacity: 1;
+    pointer-events: all;
+    top: 50%;
 }
 
 /* FOOTER */
@@ -164,4 +220,51 @@ footer>.container>hr{
 }
 footer>.container>a>p{
     margin: 10px;
+}
+
+@media screen and (max-width : 610px){
+    /*HEADER*/
+
+    header{
+        background-color: var(--footer);
+        height: 115px;
+        display: flex;
+        flex-direction: column;
+    }
+    header>.container{
+        display: inline-block;
+        width: 80%;
+        /*
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;*/
+    }
+    header>.container>img{
+        height: 35px;
+        margin-left: 2%;
+        margin-top: 1%;
+    }
+    header>.container>h1{
+        text-align: center;
+        margin-left: 23%;
+        font-size: 40px;
+    }
+    
+
+    /*MAIN*/
+    #connexion, #inscription, #itineraire{
+        border-radius: 0%;
+        margin-top: 0%;
+        margin-bottom: 0%;
+        height: 100%;
+        width: 70%;
+    }
+
+    /*FOOTER*/
+    footer>.container{
+        height: 55px;
+    }
+    footer>.container>a>p{
+        font-size: 12px;
+    }
 }
