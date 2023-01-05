@@ -42,7 +42,6 @@
 		- Métro 🚇
 		- Tramway 🚃
 		- Bus 🚎
-
 	Afin de simplifier l'identification de chaque ligne, elles sont identifiables (sur la carte et dans le détail des itinéraires) par leurs propres couleurs (ex: jaune pour la ligne 1 du métro).
 </div>
 
