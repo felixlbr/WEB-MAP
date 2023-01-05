@@ -57,6 +57,8 @@ Un formulaire de connexion et un autre d'inscription vous permette de vous conne
 </div>
 <br>
 
+!["test](./readme/inscription_connexion.png "Inscription et Connexion")
+
 ### 3. Stations préférées <a class="anchor" id="section2_3"></a>
 <div align="justify">
 	Chaque utilisateur peut définir une station <i>home</i> et une station <i>work</i>. Ces stations seront proposées à l'utilisateur pour lui apporter une expérience personnalisée.
