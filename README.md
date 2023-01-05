@@ -86,10 +86,6 @@ Nous marquons sur la carte les gares principales (gare de départ et gare d'arri
 Un formulaire de connexion et un autre d'inscription vous permette de vous connecter et d'accèder à la page itineraire.php.
 </div>
 <br>
-<div align="center">
-<b>⚠️ Seules les personnes connectées peuvent accéder à cette page. ⚠️</b>
-</div>
-<br>
 
 ### 8. Stations préférées <a class="anchor" id="section2_8"></a>
 <div align="justify">
