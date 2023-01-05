@@ -1,6 +1,6 @@
 # WEB-MAP - [Félix LIBURSKI](https://github.com/felixlbr), [Hugo PEREIRA](https://github.com/tigrou23) & François PEUCH (novembre - janvier 2023)
 <div align="justify">
-	Dans ce projet universitaire, nous avons utilisé des APIs pour tracer et indiquer un itinéraire en temps réel entre deux gares d'Île-de-France.</div>
+	Dans ce projet universitaire, nous avons utilisé des APIs pour tracer et indiquer un itinéraire en temps réel entre deux gares d'Île-de-France. Des fonctionnalités supplémentaires ont été ajoutées décrites ci dessous.</div>
 
 ## <center>Table des matières</center>
 * [Prérequis pour pouvoir utiliser correctement notre site](#chapter1)
@@ -34,6 +34,7 @@
 	* [Certificat SSL](#section5_4)
 	
 ## Fonctionnalités détaillées <a class="anchor" id="chapter2"></a>
+
 ### 1. Transports disponibles <a class="anchor" id="section2_1"></a>
 Les trajets proposés par WEB-MAP concernent :
 - Train 🚅
@@ -45,6 +46,10 @@ Les trajets proposés par WEB-MAP concernent :
 Afin de simplifier l'identification de chaque ligne, elles sont identifiables (sur la carte et dans le détail des itinéraires) par leurs propres couleurs (ex: jaune pour la ligne 1 du métro).
 </div>
 
+### 2. Création du compte et connexion <a class="anchor" id="section2_2"></a>
+<div align="justify">
+Un formulaire de connexion et un autre d'inscription vous permette de vous connecter et d'accèder à la page itineraire.php. <b>Seuls les personnes connectées peuvent accéder à cette page.</b>
+</div>
 
 ## Structure du programme <a class="anchor" id="chapter2"></a>
 Nous avons construit notre jeu à partir de 4 classes. Les classes : <strong>Plateau, Paquet, Carte, Player et Game.</strong>
