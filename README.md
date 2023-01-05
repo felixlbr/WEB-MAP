@@ -5,7 +5,6 @@
 ## <center>Table des matières</center>
 * [Prérequis pour pouvoir utiliser correctement notre site](#chapter1)
 	* [Cross-origin resource sharing](#section1_1)
-	Pour utiliser toutes les fonctionnalités de notre site, il vous suffira d'installer une extesion qui
 
 * [Fonctionnalités détaillées](#chapter2)
  	* [Transports disponibles](#section2_1)
