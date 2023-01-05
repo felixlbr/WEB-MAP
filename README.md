@@ -10,11 +10,9 @@
  	* [Transports disponibles](#section2_1)
  	* [Inscription & Connexion](#section2_2)
 	* [Stations préférées](#section2_3)
-	* [Intéraction possible avec la carte](#section2_4)
 	* [Détails du trajet](#section2_5)
 	* [Météo disponible sur les stations](#section2_6)
 	* [Modification possible des données](#section2_7)
-	* [Stations préférées](#section2_8)
 
 * [Les APIs utilisées](#chapter3)
  	* [openweather](#section3_1)
@@ -53,7 +51,7 @@ Un formulaire de connexion et un autre d'inscription vous permette de vous conne
 </div>
 <br>
 
-!["test"](./readme/inscription_connexion.png "Inscription et Connexion")
+![""](readme/inscription_connexion.png "Inscription et Connexion")
 
 ### 3. Stations préférées <a class="anchor" id="section2_3"></a>
 <div align="justify">
@@ -61,11 +59,7 @@ Un formulaire de connexion et un autre d'inscription vous permette de vous conne
 </div>
 <br>
 
-### 4. Intéraction possible avec la carte <a class="anchor" id="section2_4"></a>
-<div align="justify">
-Un formulaire de connexion et un autre d'inscription vous permette de vous connecter et d'accèder à la page itineraire.php.
-</div>
-<br>
+![""](readme/gares_preferees.png "Gares préférées")
 
 ### 5. Détails du trajet <a class="anchor" id="section2_5"></a>
 <div align="justify">
@@ -73,11 +67,15 @@ Pour chaque trajet proposé, un détail est disponible sur une fenêtre pour app
 </div>
 <br>
 
+![""](readme/itineraire.png "Détails itinéraire")
+
 ### 6. Météo disponible sur les stations <a class="anchor" id="section2_6"></a>
 <div align="justify">
 Nous marquons sur la carte les gares principales (gare de départ et gare d'arrivée pour chaque transport de l'itinéraire). Lorsqu'on clique sur ces dernières, il nous est renseigné le nom ainsi que la météo correspondante.
 </div>
 <br>
+
+![""](readme/meteo.png "Météo de la gare")
 
 ### 7. Modification possible des données <a class="anchor" id="section2_7"></a>
 <div align="justify">
@@ -85,8 +83,4 @@ Un formulaire de connexion et un autre d'inscription vous permette de vous conne
 </div>
 <br>
 
-### 8. Stations préférées <a class="anchor" id="section2_8"></a>
-<div align="justify">
-	Une partie <i>gestion du compte</i> a été développée pour laisser libre l'utilisateur de pouvoir changer chaque information stockée dans notre base de données.
-</div>
-<br>
+![""](readme/modification.png "Modification des données")
