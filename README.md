@@ -59,11 +59,7 @@ Un formulaire de connexion et un autre d'inscription vous permette de vous conne
 
 ### 3. Stations préférées <a class="anchor" id="section2_3"></a>
 <div align="justify">
-Un formulaire de connexion et un autre d'inscription vous permette de vous connecter et d'accèder à la page itineraire.php.
-</div>
-<br>
-<div align="center">
-<b>⚠️ Seules les personnes connectées peuvent accéder à cette page. ⚠️</b>
+Chaque utilisateur peut définir une station *home* et une station *work*. Ces stations seront proposées à l'utilisateur pour lui apporter une expérience personnalisée.
 </div>
 <br>
 
@@ -72,28 +68,16 @@ Un formulaire de connexion et un autre d'inscription vous permette de vous conne
 Un formulaire de connexion et un autre d'inscription vous permette de vous connecter et d'accèder à la page itineraire.php.
 </div>
 <br>
-<div align="center">
-<b>⚠️ Seules les personnes connectées peuvent accéder à cette page. ⚠️</b>
-</div>
-<br>
 
 ### 5. Détails du trajet <a class="anchor" id="section2_5"></a>
 <div align="justify">
-Un formulaire de connexion et un autre d'inscription vous permette de vous connecter et d'accèder à la page itineraire.php.
-</div>
-<br>
-<div align="center">
-<b>⚠️ Seules les personnes connectées peuvent accéder à cette page. ⚠️</b>
+Pour chaque trajet proposé, un détail est disponible sur une fenêtre pour apporter plus de précision sur le transport en question ainsi que les gares à emprunter.
 </div>
 <br>
 
 ### 6. Météo disponible sur les stations <a class="anchor" id="section2_6"></a>
 <div align="justify">
-Un formulaire de connexion et un autre d'inscription vous permette de vous connecter et d'accèder à la page itineraire.php.
-</div>
-<br>
-<div align="center">
-<b>⚠️ Seules les personnes connectées peuvent accéder à cette page. ⚠️</b>
+Nous marquons sur la carte les gares principales (gare de départ et gare d'arrivée pour chaque transport de l'itinéraire). Lorsqu'on clique sur ces dernières, il nous est renseigné le nom ainsi que la météo correspondante.
 </div>
 <br>
 
@@ -109,10 +93,6 @@ Un formulaire de connexion et un autre d'inscription vous permette de vous conne
 
 ### 8. Stations préférées <a class="anchor" id="section2_8"></a>
 <div align="justify">
-Un formulaire de connexion et un autre d'inscription vous permette de vous connecter et d'accèder à la page itineraire.php.
-</div>
-<br>
-<div align="center">
-<b>⚠️ Seules les personnes connectées peuvent accéder à cette page. ⚠️</b>
+Une partie *gestion du compte* a été développée pour laisser libre l'utilisateur de pouvoir changer chaque information stockée dans notre base de données.
 </div>
 <br>
