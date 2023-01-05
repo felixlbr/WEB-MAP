@@ -35,14 +35,14 @@
 	
 ## Fonctionnalités détaillées <a class="anchor" id="chapter2"></a>
 ### 1. Transports disponibles <a class="anchor" id="section2_1"></a>
-<div align="justify">
-	Les trajets proposés par WEB-MAP concernent :
+Les trajets proposés par WEB-MAP concernent :
 		- Train 🚅
 		- RER 🚈
 		- Métro 🚇
 		- Tramway 🚃
 		- Bus 🚎
-	Afin de simplifier l'identification de chaque ligne, elles sont identifiables (sur la carte et dans le détail des itinéraires) par leurs propres couleurs (ex: jaune pour la ligne 1 du métro).
+<div align="justify">
+Afin de simplifier l'identification de chaque ligne, elles sont identifiables (sur la carte et dans le détail des itinéraires) par leurs propres couleurs (ex: jaune pour la ligne 1 du métro).
 </div>
 
 
