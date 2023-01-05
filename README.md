@@ -59,7 +59,7 @@ Un formulaire de connexion et un autre d'inscription vous permette de vous conne
 
 ### 3. Stations préférées <a class="anchor" id="section2_3"></a>
 <div align="justify">
-Chaque utilisateur peut définir une station *home* et une station *work*. Ces stations seront proposées à l'utilisateur pour lui apporter une expérience personnalisée.
+Chaque utilisateur peut définir une station __home__ et une station __work__. Ces stations seront proposées à l'utilisateur pour lui apporter une expérience personnalisée.
 </div>
 <br>
 
