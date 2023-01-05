@@ -2,47 +2,51 @@
 <div align="justify">
 	Dans ce projet universitaire, nous avons utilisé des APIs pour tracer et indiquer un itinéraire en temps réel entre deux gares d'Île-de-France.</div>
 
-## <center>Table of Contents </center>
+## <center>Table des matières</center>
 * [Prérequis pour pouvoir utiliser correctement notre site](#chapter1)
-* 	* [Cross-origin resource sharing](#section2_1)
-* [Fonctionnalités détaillées](#chapter1)
- 	* [Transports disponibles](#section2_1)
- 	* [Création du compte et connexion](#section2_1)
-	* [Stations préférées](#section2_2)
-	* [Intéraction possible avec la carte](#section2_2)
-	* [Détails du trajet](#section2_2)
-	* [Météo disponible sur les stations](#section2_2)
-	* [Stations préférées](#section2_2)
+	* [Cross-origin resource sharing](#section1_1)
+	Pour utiliser toutes les fonctionnalités de notre site, il vous suffira d'installer une extesion qui
 
-	* [La classe Player](#section2_3)
-	* [La classe Plateau](#section2_4)
-* [Les APIs utilisées](#chapter1)
- 	* [La classe Carte](#section2_1)
-	* [La classe Paquet](#section2_2)
-	* [La classe Player](#section2_3)
-	* [La classe Plateau](#section2_4)
-* [Structure du projet](#chapter1)
-	* [La classe Carte](#section2_1)
-	* [La classe Paquet](#section2_2)
-	* [La classe Player](#section2_3)
-	* [La classe Plateau](#section2_4)
-	* [La classe Game](#section2_5)
-* [Architecture](#chapter1)
-	* [La classe Carte](#section2_1)
-	* [La classe Paquet](#section2_2)
-	* [La classe Player](#section2_3)
-	* [La classe Plateau](#section2_4)
-	* [La classe Game](#section2_5)
+* [Fonctionnalités détaillées](#chapter2)
+ 	* [Transports disponibles](#section2_1)
+ 	* [Création du compte et connexion](#section2_2)
+	* [Stations préférées](#section2_3)
+	* [Intéraction possible avec la carte](#section2_4)
+	* [Détails du trajet](#section2_5)
+	* [Météo disponible sur les stations](#section2_6)
+	* [Modification possible des données](#section2_7)
+	* [Stations préférées](#section2_8)
+
+* [Les APIs utilisées](#chapter3)
+ 	* [openweather](#section3_1)
+	* [opendata](#section3_2)
+	* [citymapper](#section3_3)
+
+* [Structure du projet](#chapter4)
+	* [PHP/SQL](#section4_1)
+	* [Javascript/JQUERY](#section4_2)
+	* [CSS](#section2_3)
+	* [Base données](#section4_3)
+
+* [Architecture](#chapter5)
+	* [Hébergement du projet](#section5_1)
+	* [Hébergement de la base de données MySQL](#section5_2)
+	* [Nom de domaine](#section5_3)
+	* [Certificat SSL](#section5_4)
 	
-## Introduction <a class="anchor" id="chapter1"></a>
-<div align="justify">Le projet consiste à reproduire le jeu du 6 qui prend tout en l’adaptant
-aux attentes du sujet. Notre programme est développé en langage JAVA. Nous avons utilisé l’IDE Eclipse pour développer ce programme. Ce dernier est encodé en ISO-8859-1 et les retours à la ligne sont ceux de Windows. Un package (util) nous a été distribué avec le sujet qui contient deux classes JAVA. Ces classes nous serviront à faire Pause et ClearScreen quand notre application sera exécutée. Ces deux méthodes servent à attendre une entrée clavier pour poursuivre le jeu et à effacer la console où le jeu est lancé.</div>
-<div align="justify">Notre programme est capable de traiter une manche complète d’une partie du 6 qui prend. C’est à dire de la distribution des cartes à la dernière carte posée sur le plateau avec l’affichage des scores. Pour exécuter notre programme, il suffit de rentrer le nom des joueurs dans un fichier texte nommé de cette manière : config.txt.</div>
-<div align="justify">Pour veiller au bon déroulé de ce projet, nous avons utilisé le logiciel GIT qui est un logiciel de gestion de versions. En effet, ce logiciel s'est avéré très utile lors de ce projet collaboratif plutôt long. Cela nous a permis, entre autres, de pouvoir faire des modifications simultanées, c'est-à-dire une possibilité de fusionner intelligemment notre travail. De plus, l'avantage de cette méthode est d'avoir le pouvoir de garder en mémoire toutes les anciennes versions (historique) mais aussi de savoir QUI a modifié QUOI et QUAND.</div>
-<div align="justify">De plus, notre organisation a été complétée par l'utilisation de Discord pour échanger des messages, des fichiers ou même programmer des réunions hebdomadaires. Enfin nous avons utilisé Trello, qui sert à planifier des tâches
-dans le temps. Le respect de ces deadlines a été primordial pour une avancée satisfaisante au cours du temps.</div>
-<div align="justify">Enfin, l’extension SonarLint de notre IDE Eclipse nous a permis de corriger certaines incohérences dans notre code, comme des déclarations de variables qui se sont avérées être inutiles ou encore de nous mettre en garde
-sur le fait que notre méthode Main était trop longue. Cette extension nous a donc permis d’optimiser certaines parties du code qui nous semblaient déjà optimisées (manque d’expériences).</div>
+## Fonctionnalités détaillées <a class="anchor" id="chapter2"></a>
+### 1. Transports disponibles <a class="anchor" id="section2_1"></a>
+<div align="justify">
+	Les trajets proposés par WEB-MAP concernent :
+		- Train 🚅
+		- RER 🚈
+		- Métro 🚇
+		- Tramway 🚃
+		- Bus 🚎
+
+	Afin de simplifier l'identification de chaque ligne, elles sont identifiables (sur la carte et dans le détail des itinéraires) par leurs propres couleurs (ex: jaune pour la ligne 1 du métro).
+</div>
+
 
 ## Structure du programme <a class="anchor" id="chapter2"></a>
 Nous avons construit notre jeu à partir de 4 classes. Les classes : <strong>Plateau, Paquet, Carte, Player et Game.</strong>
