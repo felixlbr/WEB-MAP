@@ -49,15 +49,11 @@ Afin de simplifier l'identification de chaque ligne, elles sont identifiables (s
 
 ### 2. Inscription & Connexion <a class="anchor" id="section2_2"></a>
 <div align="justify">
-Un formulaire de connexion et un autre d'inscription vous permette de vous connecter et d'accèder à la page itineraire.php.
-</div>
-<br>
-<div align="center">
-<b>⚠️ Seules les personnes connectées peuvent accéder à cette page. ⚠️</b>
+Un formulaire de connexion et un autre d'inscription vous permette de vous connecter et d'accèder à la page <a href="itineraire.php">itinéraire</a> (⚠️ Seules les personnes connectées peuvent accéder à cette page.).
 </div>
 <br>
 
-!["test](./readme/inscription_connexion.png "Inscription et Connexion")
+!["test"](./readme/inscription_connexion.png "Inscription et Connexion")
 
 ### 3. Stations préférées <a class="anchor" id="section2_3"></a>
 <div align="justify">
