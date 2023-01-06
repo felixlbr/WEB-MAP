@@ -168,7 +168,7 @@ Voici le détail de notre installation de la base de données et de son accès v
 </div>
 <br>
 
-```bsh
+```console
 //Installation des packages nécessaires
 apt-get install mariadb-server
 mysql_secure_installation
