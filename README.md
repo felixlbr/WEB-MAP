@@ -104,7 +104,6 @@ Lien vers le site de l'entreprise : <a href="https://opendata.hauts-de-seine.fr/
 API utilisée pour deux choses :
 - Récupérer toutes les gares afin de lister les gares et aider l'utilisateur à trouver sa destination.
 - Récupérer les tracés des lignes que l'on cherche. L'API renvoie un tableau de coordonnées qu'on va utiliser pour tracer à l'aide de polyline le parcours du la ligne concernée.
-</br>
 
 ### 3. Citymapper <a class="anchor" id="section3_3"></a>
 <div align="justify">
