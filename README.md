@@ -1,6 +1,11 @@
 # WEB-MAP - [Félix LIBURSKI](https://github.com/felixlbr), [Hugo PEREIRA](https://github.com/tigrou23) & François PEUCH (novembre - janvier 2023)
 <div align="justify">
-	Dans ce projet universitaire, nous avons utilisé des APIs pour tracer et indiquer un itinéraire en temps réel entre deux gares d'Île-de-France. Des fonctionnalités supplémentaires ont été ajoutées et décrites ci dessous.</div>
+	Dans ce projet universitaire, nous avons utilisé des APIs pour tracer et indiquer un itinéraire en temps réel entre deux gares d'Île-de-France. Des fonctionnalités supplémentaires ont été ajoutées et décrites ci dessous.
+</div>
+<br>
+
+Lien vers le site :
+- https://hugopereira.fr
 
 ## <center>Table des matières</center>
 * [Prérequis pour pouvoir utiliser correctement notre site](#chapter1)
@@ -138,5 +143,73 @@ Cette API est sans doute la plus importante de notre projet. Elle permet de nous
 ### 4. Base de données <a class="anchor" id="section4_4"></a>
 <div align="justify">
 à rédiger
+</div>
+<br>
+
+## Architecure <a class="anchor" id="chapter5"></a>
+
+### 1. Hébergement du projet <a class="anchor" id="section5_1"></a>
+<div align="justify">
+Le projet est hébergé en ligne et donc accessible avec un accès internet. 
+</div>
+<br>
+
+Lien vers le site :
+- https://hugopereira.fr
+
+<div align="justify">
+Nous accèdons au VPS (<i>Virtual Private Server</i>) via le protocole SSH (<i>Secure Shell</i>). De ce fait, nous avons mis en place un serveur Apache2 et cloné notre répertoire GitHub. Cela nous permet de pull notre projet de manière automotisé avec un contrab (contrab permet d'exécuter des commandes périodiquement). 
+</div>
+<br>
+
+### 2. Hébergement de la base de données MySQL <a class="anchor" id="section5_2"></a>
+<div align="justify">
+Voici le détail de notre installation de la base de données et de son accès via PhpMyAdmin.
+</div>
+<br>
+
+```bsh
+//Installation des packages nécessaires
+apt-get install mariadb-server
+mysql_secure_installation
+apt-get install apache2
+apt-get install php7.3 php-mysql php-xml
+wget du lien de phpmyadmin
+tar xvf de l’archive
+
+//Modifier le bind :
+nano /etc/mysql/mariadb.conf.d/50-server.cnf
+
+//Paramétrage de la base
+mysql -p
+create database webmap;
+CREATE USER ‘webmap’@‘%’ IDENTIFIED BY ‘IUT_75’;
+GRANT ALL PRIVILEGES ON webmap.* TO 'webmap'@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO root@localhost IDENTIFIED BY ‘****’ with GRANT OPTION; 
+GRANT ALL PRIVILEGES ON webmap.* TO webmap@localhost IDENTIFIED BY ‘IUT_75’ with GRANT OPTION; 
+FLUSH Privileges
+
+//Update des changements
+systemctl restart mariadb
+```
+
+<div align="justify">
+Avec l'association entre Apache2 et PhpMyAdmin, nous pouvons accèder à l'interface de PhpMyAdmin depuis n'importe quel endroit. 
+</div>
+<br>
+
+Adresse de la base de données :
+- http://82.165.187.129/
+<br>
+
+### 3. Nom de domaine <a class="anchor" id="section5_3"></a>
+<div align="justify">
+Un nom de domaine a été acheté sur IONOS pour pouvoir rendre l'accès à notre site plus simple. Il a suffit de paramétrer les champs du DNS pour pouvoir rediriger le flux vers l'adresse IP de notre serveur.
+</div>
+<br>
+
+### 4. Certificat SSL <a class="anchor" id="section5_4"></a>
+<div align="justify">
+Nous avons généré un certificat SSL (<i>Transport Layer Security</i>) avec l'outil Certbot. Cet outil est un package que l'on peut télécharger sur Linux en spécifiant le site Apache2 à certifier. De ce fait, notre site est aussi bien accessible par le protocole HTTP et HTTPS.
 </div>
 <br>
