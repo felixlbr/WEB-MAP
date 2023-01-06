@@ -90,7 +90,7 @@ Un formulaire de connexion et un autre d'inscription vous permette de vous conne
 ### 1. OpenWeather <a class="anchor" id="section3_1"></a>
 <div align="justify">
 Lien vers le site de l'entreprise : <a href="https://openweathermap.org/api">OpenWeather</a>
-<br>
+<br><br>
 Nous récupérons de cette API la météo pour un point géographique donné. Cela nous permet d'ajouter la température pour les gares cliquée.
 </div>
 <br>
