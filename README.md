@@ -60,7 +60,7 @@ Une fois activée, l'extension vous permettra de faire les requêtes que vous so
 
 ![""](readme/cors.png "Extension activée")
 
-⚠️ Attention, il est tout de même qu'aucun trajet ne vous soit proposé si vous utilisez le site dans la nuit (pas de transports a proposer car temps réel).
+⚠️ Attention, il est tout de même possible qu'aucun trajet ne vous soit proposé si vous utilisez le site dans la nuit (pas de transports a proposé car temps réel).
 	
 ## Fonctionnalités détaillées <a class="anchor" id="chapter2"></a>
 
@@ -78,9 +78,11 @@ Afin de simplifier l'identification de chaque ligne, elles sont identifiables (s
 
 ### 2. Inscription & Connexion <a class="anchor" id="section2_2"></a>
 <div align="justify">
-Un formulaire de connexion et un autre d'inscription vous permette de vous connecter et d'accèder à la page <a href="itineraire.php">itinéraire</a> (⚠️ Seules les personnes connectées peuvent accéder à cette page.).
+Un formulaire de connexion et un autre d'inscription vous permettent de vous connecter et d'accéder à la page <a href="itineraire.php">itinéraire</a> (⚠️ Seules les personnes connectées peuvent accéder à cette page.).
 </div>
 <br>
+
+À l'inscription, nous obligeons l'utilisateur à utiliser un mot de passe composé au minimum de 8 caractères.
 
 ![""](readme/inscription_connexion.png "Inscription et Connexion")
 
@@ -110,7 +112,7 @@ Nous marquons sur la carte les gares principales (gare de départ et gare d'arri
 
 ### 7. Modification possible des données <a class="anchor" id="section2_7"></a>
 <div align="justify">
-Un formulaire de connexion et un autre d'inscription vous permette de vous connecter et d'accèder à la page itineraire.php.
+Un formulaire de connexion et un autre d'inscription vous permettent de vous connecter et d'accèder à la page itineraire.php.
 </div>
 <br>
 
@@ -122,7 +124,7 @@ Un formulaire de connexion et un autre d'inscription vous permette de vous conne
 <div align="justify">
 Lien vers le site de l'entreprise : <a href="https://openweathermap.org/api">OpenWeather</a>
 <br><br>
-Nous récupérons de cette API la météo pour un point géographique donné. Cela nous permet d'ajouter la température pour les gares cliquée.
+Nous récupérons de cette API la météo pour un point géographique donné. Cela nous permet d'ajouter la température pour les gares cliquées
 </div>
 <br>
 
@@ -133,8 +135,8 @@ Lien vers le site de l'entreprise : <a href="https://opendata.hauts-de-seine.fr/
 <br>
 
 API utilisée pour deux choses :
-- Récupérer toutes les gares afin de lister les gares et aider l'utilisateur à trouver sa destination.
-- Récupérer les tracés des lignes que l'on cherche. L'API renvoie un tableau de coordonnées qu'on va utiliser pour tracer à l'aide de polyline le parcours du la ligne concernée.
+- Récupérer toutes les gares afin de les lister et aider l'utilisateur à trouver sa destination.
+- Récupérer les tracés des lignes que l'on cherche. L'API renvoie un tableau de coordonnées qu'on va utiliser pour tracer à l'aide de polylines le parcours de la ligne concernée.
 
 ### 3. Citymapper <a class="anchor" id="section3_3"></a>
 <div align="justify">
@@ -142,13 +144,13 @@ Lien vers le site de l'entreprise : <a href="https://docs.external.citymapper.co
 ">Citymapper</a>
 </div>
 <br>
-Cette API est sans doute la plus importante de notre projet. Elle permet de nous délivrer le chemin entre deux points donnés. Nous trions ensuite les données JSON pour retirer tous trajets à vélo ou à pied. Ce sont avec ses données que nous traçons le trajet et que nous délivrons tous les détails du parcours.
+Cette API est sans doute la plus importante de notre projet. Elle permet de nous délivrer le chemin entre deux points donnés. Nous trions ensuite les données JSON pour retirer tous trajets à vélo ou à pied. Ce sont avec ces données que nous traçons le trajet et que nous délivrons tous les détails du parcours.
 </div>
 <br>
 
 ## Structure du projet <a class="anchor" id="chapter4"></a>
 
-**Toutes nos fonctions JavaScript sont documentées ✅**
+**Toutes nos fonctions JavaScript sont documentées ✅.**
 
 ### 1. PHP/SQL <a class="anchor" id="section4_1"></a>
 Nous avons séparé en 2 types de catégories les fichiers PHP :<br><br>
@@ -157,9 +159,9 @@ Il est principalement composé en HTML. Le fichier template est la structure de 
 **Fichier de connexion :**<br>
 Il a une fonction bien particulière :
 <ul>
-	<li><b>connect.php</b> : Met en connexion notre site avec la base de données. On y trouve les paramètres de connexion ainsi que la fonction de connexion. Ce fichier est necessaire dans les autres fichiers PHP avant nos requêtes SQL.
-	<li><b>envoieConnexion.php</b> : Vérifie avec la base de données si l'email de l'utilisateur existe. Ce fichier est utilisé lors de la connexion au site web. Nous vérifions l'information avec une requête <i>SELECT</i>. Si l'utilisateur à les paramètres d'administrateurs, la page renvoyée est celle pour administrer la base de données. 
-	<li><b>envoieInscription.php</b> : Inscrit un nouvel utilisateur dans la base de donnée. Nous utilisons une requête <i>INSERT</i>. Les valeurs dans la colonne <i>Work</i> et <i>Home</i> sont à <i>Null</i> par défaut. L'utilisateur a le rôle <i>utilisateur</i> lorsqu'il s'inscrit.
+	<li><b>connect.php</b> : Met en connexion notre site avec la base de données. On y trouve les paramètres de connexion ainsi que la fonction de connexion. Ce fichier est nécessaire dans les autres fichiers PHP avant nos requêtes SQL.
+	<li><b>envoieConnexion.php</b> : Vérifie avec la base de données si l'email de l'utilisateur existe. Ce fichier est utilisé lors de la connexion au site web. Nous vérifions l'information avec une requête <i>SELECT</i>. Si l'utilisateur a les paramètres d'administrateur, la page renvoyée est celle pour administrer la base de données. 
+	<li><b>envoieInscription.php</b> : Inscrit un nouvel utilisateur dans la base de données. Nous utilisons une requête <i>INSERT</i>. Les valeurs dans la colonne <i>Work</i> et <i>Home</i> sont à <i>Null</i> par défaut. L'utilisateur a le rôle <i>utilisateur</i> lorsqu'il s'inscrit.
 	<li><b>envoieProfile.php</b> : Permet de récolter les données d'un utilisateur à partir de son email. Ce fichier est utilisé lorsque l'utilisateur connecté affiche les détails de son profil. En ayant récupéré seulement son email et son mot de passe de connexion, la fonction du fichier va chercher les informations complémentaires de l'utilisateur. Nous utilisons une requête <i>SELECT</i> sur le mail de la personne connectée.
 	<li><b>envoieCompte.php</b> : Permet de modifier les informations de l'utilisateur. Ce fichier est utilisé lorsque l'utilisateur veut modifier certaines informations de son compte. Il ne peut juste pas modifier son adresse mail qui sert de clé dans la base de données. Nous utilisons une requête <i>UPDATE</i>.
 	<li><b>logout.php</b> : Permet de déconnecter un utilisateur. Le lien de déconnexion est utilisé sur toutes les pages du site et permet de détruire la session active.
@@ -184,7 +186,7 @@ $('#valider').click(function () {
 })
 ```
 
-De plus, nous avons utiliser les fichiers *.js* pour éviter la redondance de code. Cela facilite grandement la maintenance. Nous pouvons prendre l'exemple du fichier [footeur.js](./js/footer.js) qui nous permet d'ajouter le même footer à toutes les pages dynamiquement.
+De plus, nous avons utilisé les fichiers *.js* pour éviter la redondance de code. Cela facilite grandement la maintenance. Nous pouvons prendre l'exemple du fichier [footer.js](./js/footer.js) qui nous permet d'ajouter le même footer à toutes les pages dynamiquement.
 
 **Toutes nos requêtes sont effectuées via AJAX, par exemple pour Citymapper :**
 ```js
@@ -210,7 +212,7 @@ function afficherLigne(type, ligne, couleur){
 }
 ```
 
-Nous avons également utilisé des fichiers js comme [itineraire.js](./js/).
+Nous avons également utilisé des fichiers *js* comme [itineraire.js](./js/).
 
 ### 3. CSS <a class="anchor" id="section4_3"></a>
 <div align="justify">
@@ -220,8 +222,8 @@ Nous avons utilisé 3 fichiers CSS pour habiller notre site web :<br>
 	<li>itineraire_style.css : permet d'habiller la page itinéraire.
 	<li>style.css : rajouter un loader.
 </ul>
-Les fichiers css permettent de rendre notre site web responsive. Il y a une version ordinateur et une version mobile. La version mobile est essentielle pour la cohérence d'un projet abouti. En effet, notre site permet de trouver un itinéraire pour se déplacer. Cette consultation se fait principalement sur un téléphone, lorsque nous avons par accès à notre ordinateur. Il était donc pour nous essentiel de développer cette version résuite pour les smartphones. Concernant le code CSS, nous avons utilisé une méthode de développement web : les variables. 
-Le fichier CSS est alors plus lisible ce qui permet de travailler à plusieurs très facielement.
+Les fichiers css permettent de rendre notre site web responsive. Il y a une version ordinateur et une version mobile. La version mobile est essentielle pour la cohérence d'un projet abouti. En effet, notre site permet de trouver un itinéraire pour se déplacer. Cette consultation se fait principalement sur un téléphone, lorsque nous n'avons pas accès à notre ordinateur. Il était donc pour nous essentiel de développer cette version réduite pour les smartphones. Concernant le code CSS, nous avons utilisé une méthode de développement web : les variables. 
+Le fichier CSS est alors plus lisible ce qui permet de travailler à plusieurs très facilement.
 </div>
 <br>
 
@@ -236,11 +238,7 @@ Le fichier CSS est alors plus lisible ce qui permet de travailler à plusieurs t
 
 La table *gare* est composée de plusieurs champs :
 - id (primary key)
-- prenom
-- nom
-- email (unique)
-- home
-- work
+- libelle
 
 La table *user* est composée de plusieurs champs :
 - id (primary key)
@@ -259,7 +257,7 @@ Chaque utilisateur a un rôle. Pour l'instant nous avons implémenté deux rôle
 - standard
 - admin
 
-Si une personne a le rôle administratif elle pourra accèder à la configuration de notre base sur *PHPMyAdmin*.
+Si une personne a le rôle admin, elle pourra accéder à la configuration de notre base sur *PHPMyAdmin*.
 
 Un utilisateur lambda sera renvoyé vers le choix de l'itinéraire.
 
@@ -267,7 +265,7 @@ Un utilisateur lambda sera renvoyé vers le choix de l'itinéraire.
 
 ### 1. Hébergement du projet <a class="anchor" id="section5_1"></a>
 <div align="justify">
-Le projet est hébergé en ligne et donc accessible avec un accès internet. 
+**Le projet est hébergé en ligne et donc accessible avec un accès internet.** 
 </div>
 <br>
 
@@ -311,7 +309,7 @@ systemctl restart mariadb
 ```
 
 <div align="justify">
-<b>Avec l'association entre Apache2 et PhpMyAdmin, nous pouvons accèder à l'interface de PhpMyAdmin depuis n'importe quel endroit.</b>
+<b>Avec l'association entre Apache2 et PhpMyAdmin, nous pouvons accéder à l'interface de PhpMyAdmin depuis n'importe quel endroit.</b>
 </div>
 <br>
 
@@ -326,6 +324,6 @@ Un nom de domaine a été acheté sur IONOS pour pouvoir rendre l'accès à notr
 
 ### 4. Certificat SSL <a class="anchor" id="section5_4"></a>
 <div align="justify">
-Nous avons généré un certificat SSL (<i>Transport Layer Security</i>) avec l'outil Certbot. Cet outil est un package que l'on peut télécharger sur Linux en spécifiant le site Apache2 à certifier. De ce fait, notre site est aussi bien accessible par le protocole HTTP et HTTPS.
+Nous avons généré un certificat SSL (<i>Transport Layer Security</i>) avec l'outil <i>Certbot</i>. Cet outil est un package que l'on peut télécharger sur Linux en spécifiant le site Apache2 à certifier. De ce fait, notre site est à la fois accessible par le protocole HTTP et HTTPS.
 </div>
 <br>
