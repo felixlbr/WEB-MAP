@@ -200,7 +200,6 @@ Avec l'association entre Apache2 et PhpMyAdmin, nous pouvons accèder à l'inter
 
 Adresse de la base de données :
 - http://82.165.187.129/
-<br>
 
 ### 3. Nom de domaine <a class="anchor" id="section5_3"></a>
 <div align="justify">
