@@ -68,9 +68,10 @@ header>.container>.containerItineraire{
     grid-template-columns: 1fr 2fr;
 }
 header .containerMenu{
+    background-color: aqua;
     grid-column: 2;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 header>.container>img{
     height: 85px;
@@ -221,6 +222,7 @@ footer>.container>hr{
 footer>.container>a>p{
     margin: 10px;
 }
+
 
 @media screen and (max-width : 610px){
     /*HEADER*/
