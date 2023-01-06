@@ -194,7 +194,7 @@ systemctl restart mariadb
 ```
 
 <div align="justify">
-Avec l'association entre Apache2 et PhpMyAdmin, nous pouvons accèder à l'interface de PhpMyAdmin depuis n'importe quel endroit. 
+<b>Avec l'association entre Apache2 et PhpMyAdmin, nous pouvons accèder à l'interface de PhpMyAdmin depuis n'importe quel endroit.</b>
 </div>
 <br>
 
