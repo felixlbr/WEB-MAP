@@ -122,29 +122,120 @@ Cette API est sans doute la plus importante de notre projet. Elle permet de nous
 
 ## Structure du projet <a class="anchor" id="chapter4"></a>
 
+**Toutes nos fonctions JavaScript sont documentées ✅**
+
 ### 1. PHP/SQL <a class="anchor" id="section4_1"></a>
-<div align="justify">
-à rédiger
-</div>
-<br>
+Nous avons séparé en 2 types de catégories les fichiers PHP :<br><br>
+**Fichier template :**<br>
+Il est principalement composé en HTML. Le fichier template est la structure de la page mais pour pouvoir gérer les sessions connectées, nous avons eu besoin d'insérer du PHP. L'en-tête et des bouts du fichiers sont en PHP. <br><br>
+**Fichier de connexion :**<br>
+Il a une fonction bien particulière :
+<ul>
+	<li><b>connect.php</b> : Met en connexion notre site avec la base de données. On y trouve les paramètres de connexion ainsi que la fonction de connexion. Ce fichier est necessaire dans les autres fichiers PHP avant nos requêtes SQL.
+	<li><b>envoieConnexion.php</b> : Vérifie avec la base de données si l'email de l'utilisateur existe. Ce fichier est utilisé lors de la connexion au site web. Nous vérifions l'information avec une requête <i>SELECT</i>. Si l'utilisateur à les paramètres d'administrateurs, la page renvoyée est celle pour administrer la base de données. 
+	<li><b>envoieInscription.php</b> : Inscrit un nouvel utilisateur dans la base de donnée. Nous utilisons une requête <i>INSERT</i>. Les valeurs dans la colonne <i>Work</i> et <i>Home</i> sont à <i>Null</i> par défaut. L'utilisateur a le rôle <i>utilisateur</i> lorsqu'il s'inscrit.
+	<li><b>envoieProfile.php</b> : Permet de récolter les données d'un utilisateur à partir de son email. Ce fichier est utilisé lorsque l'utilisateur connecté affiche les détails de son profil. En ayant récupéré seulement son email et son mot de passe de connexion, la fonction du fichier va chercher les informations complémentaires de l'utilisateur. Nous utilisons une requête <i>SELECT</i> sur le mail de la personne connectée.
+	<li><b>envoieCompte.php</b> : Permet de modifier les informations de l'utilisateur. Ce fichier est utilisé lorsque l'utilisateur veut modifier certaines informations de son compte. Il ne peut juste pas modifier son adresse mail qui sert de clé dans la base de données. Nous utilisons une requête <i>UPDATE</i>.
+	<li><b>logout.php</b> : Permet de déconnecter un utilisateur. Le lien de déconnexion est utilisé sur toutes les pages du site et permet de détruire la session active.
+</ul>
 
 ### 2. Javascript/JQUERY <a class="anchor" id="section4_2"></a>
-<div align="justify">
-à rédiger
-</div>
-<br>
+Nous avons deux fichiers JavaScript/JQUERY qui gèrent l'aspect algorithmique de notre projet :
+- [script.js](./js/script.js)
+- [itineraire.js](./js/script.js)
+
+*script.js* va s'occuper, entre autres, de faire les requêtes. Le fichier *itineraire.js* va davantage servir à gérer l'aspect événementiel. Par exemple à la validation :
+
+```js
+$('#valider').click(function () {
+    $('#itineraire').hide()
+    $('#chemin').show()
+    let index = getIndex($('#departChoix').val())
+    let coordonneesDepart = villes[index].fields.geo_point_2d
+    index = getIndex($('#arriveeChoix').val())
+    let coordonneesArrivee = villes[index].fields.geo_point_2d
+    tracerTrajet(coordonneesDepart, coordonneesArrivee)
+})
+```
+
+De plus, nous avons utiliser les fichiers *.js* pour éviter la redondance de code. Cela facilite grandement la maintenance. Nous pouvons prendre l'exemple du fichier [footeur.js](./js/footer.js) qui nous permet d'ajouter le même footer à toutes les pages dynamiquement.
+
+**Toutes nos requêtes sont effectuées via AJAX, par exemple pour Citymapper :**
+```js
+/**
+ * Affiche une ligne
+ * @param type type de la ligne (RER, TRAIN...)
+ * @param ligne la ligne en question (C, N...)
+ */
+function afficherLigne(type, ligne, couleur){
+    let cpt=0;
+    let base = 0;
+    do{
+        $.ajax({
+            method: 'GET',
+            url: "https://opendata.hauts-de-seine.fr/api/records/1.0/search/?dataset=traces-du-reseau-de-transport-ferre-dile-de-france&q=&facet=mode&facet=indice_lig&refine.mode="+ type.toUpperCase().trim() + "&refine.indice_lig=" + ligne.toUpperCase().trim() + "&rows=100&start=" + base*100,
+            success : function(data){
+                cpt = data.parameters.rows;
+                tracerLigne(data, couleur);
+            },
+        });
+        ++ base;
+    }while(cpt!==0);
+}
+```
+
+Nous avons également utilisé des fichiers js comme [itineraire.js](./js/).
 
 ### 3. CSS <a class="anchor" id="section4_3"></a>
 <div align="justify">
-à rédiger
+Nous avons utilisé 3 fichiers CSS pour habiller notre site web :<br>
+<ul>
+	<li>connexion_style.css : permet d'habiller la page de connexion.
+	<li>itineraire_style.css : permet d'habiller la page itinéraire.
+	<li>style.css : rajouter un loader.
+</ul>
+Les fichiers css permettent de rendre notre site web responsive. Il y a une version ordinateur et une version mobile. La version mobile est essentielle pour la cohérence d'un projet abouti. En effet, notre site permet de trouver un itinéraire pour se déplacer. Cette consultation se fait principalement sur un téléphone, lorsque nous avons par accès à notre ordinateur. Il était donc pour nous essentiel de développer cette version résuite pour les smartphones. Concernant le code CSS, nous avons utilisé une méthode de développement web : les variables. 
+Le fichier CSS est alors plus lisible ce qui permet de travailler à plusieurs très facielement.
 </div>
 <br>
 
 ### 4. Base de données <a class="anchor" id="section4_4"></a>
-<div align="justify">
-à rédiger
-</div>
-<br>
+
+3 tables sont utilisées dans notre projet :
+- *gare* : liste des gares à utiliser.
+- *user* : Garder toutes les informations de connexion des utilisateurs.
+- *roles* : gérer les rôles des utilisateurs de l'application.
+
+**La table *gare* n'est plus utilisée**. En effet, il était trop lourd de stocker les 400 gares disponibles et pas assez proche de la réalité. C'est-à-dire que si une gare est supprimée, on ne souhaite pas qu'elle soit proposée à l'utilisateur. C'est pourquoi nous utilsons à la place une API qui nous livre les gares en format JSON.
+
+La table *gare* est composée de plusieurs champs :
+- id (primary key)
+- prenom
+- nom
+- email (unique)
+- home
+- work
+
+La table *user* est composée de plusieurs champs :
+- id (primary key)
+- prenom
+- nom
+- email (unique)
+- home
+- work
+- roles (foreign key de Roles(id))
+
+La table *roles* est composée de plusieurs champs :
+- id (primary key)
+- libelle
+
+Chaque utilisateur a un rôle. Pour l'instant nous avons implémenté deux rôles :
+- standard
+- admin
+
+Si une personne a le rôle administratif elle pourra accèder à la configuration de notre base sur *PHPMyAdmin*.
+
+Un utilisateur lambda sera renvoyé vers le choix de l'itinéraire.
 
 ## Architecure <a class="anchor" id="chapter5"></a>
 

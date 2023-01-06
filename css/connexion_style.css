@@ -1,11 +1,5 @@
 /* SETTINGS */
 :root{
-    /* Comment utiliser des variable ?
-    *  écrire :
-    *           color : var(--black);
-    *  à la place de
-    *           color : black;
-    */
     --black : #000000;
     --white : #fffbfb;
     --sncf : #9B2743;
