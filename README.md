@@ -15,7 +15,7 @@
 	* [Modification possible des données](#section2_7)
 
 * [Les APIs utilisées](#chapter3)
- 	* [openweather](#section3_1)
+ 	* [OpenWeather](#section3_1)
 	* [opendata](#section3_2)
 	* [citymapper](#section3_3)
 
@@ -23,7 +23,7 @@
 	* [PHP/SQL](#section4_1)
 	* [Javascript/JQUERY](#section4_2)
 	* [CSS](#section2_3)
-	* [Base données](#section4_3)
+	* [Base de données](#section4_3)
 
 * [Architecture](#chapter5)
 	* [Hébergement du projet](#section5_1)
@@ -84,3 +84,60 @@ Un formulaire de connexion et un autre d'inscription vous permette de vous conne
 <br>
 
 ![""](readme/modification.png "Modification des données")
+
+## Les APIs utilisées <a class="anchor" id="chapter3"></a>
+
+### 1. OpenWeather <a class="anchor" id="section3_1"></a>
+<div align="justify">
+Lien vers le site de l'entreprise : <a href="https://openweathermap.org/api">OpenWeather</a>
+<br>
+Nous récupérons de cette API la météo pour un point géographique donné. Cela nous permet d'ajouter la température pour les gares cliquée.
+</div>
+<br>
+
+### 2. Open Data Hauts de Seine <a class="anchor" id="section3_2"></a>
+<div align="justify">
+Lien vers le site de l'entreprise : <a href="https://opendata.hauts-de-seine.fr/">Open Data Hauts de Seine</a>
+</div>
+<br>
+
+API utilisée pour deux choses :
+- Récupérer toutes les gares afin de lister les gares et aider l'utilisateur à trouver sa destination.
+- Récupérer les tracés des lignes que l'on cherche. L'API renvoie un tableau de coordonnées qu'on va utiliser pour tracer à l'aide de polyline le parcours du la ligne concernée.
+</br>
+
+### 3. Citymapper <a class="anchor" id="section3_3"></a>
+<div align="justify">
+Lien vers le site de l'entreprise : <a href="https://docs.external.citymapper.com/api/
+">Citymapper</a>
+</div>
+<br>
+Cette API est sans doute la plus importante de notre projet. Elle permet de nous délivrer le chemin entre deux points donnés. Nous trions ensuite les données JSON pour retirer tous trajets à vélo ou à pied. Ce sont avec ses données que nous traçons le trajet et que nous délivrons tous les détails du parcours.
+</div>
+<br>
+
+## Structure du projet <a class="anchor" id="chapter4"></a>
+
+### 1. PHP/SQL <a class="anchor" id="section4_1"></a>
+<div align="justify">
+à rédiger
+</div>
+<br>
+
+### 2. Javascript/JQUERY <a class="anchor" id="section4_2"></a>
+<div align="justify">
+à rédiger
+</div>
+<br>
+
+### 3. CSS <a class="anchor" id="section4_3"></a>
+<div align="justify">
+à rédiger
+</div>
+<br>
+
+### 4. Base de données <a class="anchor" id="section4_4"></a>
+<div align="justify">
+à rédiger
+</div>
+<br>
