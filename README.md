@@ -10,6 +10,9 @@ Lien vers le site :
 ## <center>Table des matières</center>
 * [Prérequis pour pouvoir utiliser correctement notre site](#chapter1)
 	* [Cross-origin resource sharing](#section1_1)
+	* [Erreur détectée](#section1_2)
+	* [Correction de l'erreur](#section1_3)
+
 
 * [Fonctionnalités détaillées](#chapter2)
  	* [Transports disponibles](#section2_1)
@@ -35,6 +38,29 @@ Lien vers le site :
 	* [Hébergement de la base de données MySQL](#section5_2)
 	* [Nom de domaine](#section5_3)
 	* [Certificat SSL](#section5_4)
+
+## Prérequis pour pouvoir utiliser correctement notre site <a class="anchor" id="chapter1"></a>
+
+### 1. Cross-origin resource sharing <a class="anchor" id="section1_1"></a>
+
+Nous vous proposons cette excellente vidéo qui explique clairement ce qu'est le *CORS* :
+- https://www.youtube.com/watch?v=4KHiSt0oLJ0
+
+### 2. Erreur détectée <a class="anchor" id="section1_2"></a>
+
+Pour toute recherche d'un trajet, la requête vers le serveur de Citymapper ne fonctionnera pas :
+
+![""](readme/erreur.png "Erreur de la requête")
+
+### 3. Correction de l'erreur <a class="anchor" id="section1_3"></a>
+
+Pour corriger l'erreur, il suffira d'installer l'extension Google *Moesif Origin & CORS Changer* : [Extension à installer](https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc?hl=en-GB).
+
+Une fois activée, l'extension vous permettra de faire les requêtes que vous souhaitez. 
+
+![""](readme/cors.png "Extension activée")
+
+⚠️ Attention, il est tout de même qu'aucun trajet ne vous soit proposé si vous utilisez le site dans la nuit (pas de transports a proposer car temps réel).
 	
 ## Fonctionnalités détaillées <a class="anchor" id="chapter2"></a>
 
