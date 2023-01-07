@@ -222,7 +222,7 @@ Nous avons utilisé 3 fichiers CSS pour habiller notre site web :<br>
 	<li>itineraire_style.css : permet d'habiller la page itinéraire.
 	<li>style.css : rajouter un loader.
 </ul>
-Les fichiers css permettent de rendre notre site web responsive. Il y a une version ordinateur et une version mobile. La version mobile est essentielle pour la cohérence d'un projet abouti. En effet, notre site permet de trouver un itinéraire pour se déplacer. Cette consultation se fait principalement sur un téléphone, lorsque nous n'avons pas accès à notre ordinateur. Il était donc pour nous essentiel de développer cette version réduite pour les smartphones. Concernant le code CSS, nous avons utilisé une méthode de développement web : les variables. 
+Les fichiers CSS permettent de rendre notre site web responsive. Il y a une version ordinateur et une version mobile. La version mobile est essentielle pour la cohérence d'un projet abouti. En effet, notre site permet de trouver un itinéraire pour se déplacer. Cette consultation se fait principalement sur un téléphone, lorsque nous n'avons pas accès à notre ordinateur. Il était donc pour nous essentiel de développer cette version réduite pour les smartphones. Concernant le code CSS, nous avons utilisé une méthode de développement web : les variables. 
 Le fichier CSS est alors plus lisible ce qui permet de travailler à plusieurs très facilement.
 </div>
 <br>
@@ -265,7 +265,7 @@ Un utilisateur lambda sera renvoyé vers le choix de l'itinéraire.
 
 ### 1. Hébergement du projet <a class="anchor" id="section5_1"></a>
 <div align="justify">
-**Le projet est hébergé en ligne et donc accessible avec un accès internet.** 
+Le projet est hébergé en ligne et donc accessible avec un accès internet. 
 </div>
 <br>
 
