@@ -4,7 +4,7 @@
 
 ## <center>Table of Contents </center>
 * [Prérequis pour pouvoir utiliser correctement notre site](#chapter1)
-* 	* [Cross-origin resource sharing](#section2_1)
+ 	* [Cross-origin resource sharing](#section2_1)
 * [Fonctionnalités détaillées](#chapter1)
  	* [Transports disponibles](#section2_1)
  	* [Création du compte et connexion](#section2_1)
