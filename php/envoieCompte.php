@@ -30,7 +30,7 @@ function add_information($prenom, $email, $pwd, $home, $work, $profil){
     $sql = "UPDATE user SET prenom=:prenom, pwd=:pwd, home=:home, work=:work WHERE email=:email";
     $commande = $my_Db_Connection->prepare($sql);
     $commande->bindParam(':prenom', $prenom);
-    $commande->bindParam(':pwd', $pwd);
+    $commande->bindParam(':pwd', MD5($pwd));
     $commande->bindParam(':home', $home);
     $commande->bindParam(':work', $work);
     $commande->bindParam(':email', $email);
