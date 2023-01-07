@@ -159,7 +159,7 @@ Il est principalement composé en HTML. Le fichier template est la structure de 
 **Fichier de connexion :**<br>
 Il a une fonction bien particulière :
 <ul>
-	<li><b>connect.php</b> : Met en connexion notre site avec la base de données. On y trouve les paramètres de connexion ainsi que la fonction de connexion. Ce fichier est nécessaire dans les autres fichiers PHP avant nos requêtes SQL.
+	<li><b>connect.php</b> : Met en connexion notre site avec la base de données. On y trouve les paramètres de connexion ainsi que la fonction de connexion. L'appel de fichier est nécessaire dans les autres fichiers PHP avant nos requêtes SQL.
 	<li><b>envoieConnexion.php</b> : Vérifie avec la base de données si l'email de l'utilisateur existe. Ce fichier est utilisé lors de la connexion au site web. Nous vérifions l'information avec une requête <i>SELECT</i>. Si l'utilisateur a les paramètres d'administrateur, la page renvoyée est celle pour administrer la base de données. 
 	<li><b>envoieInscription.php</b> : Inscrit un nouvel utilisateur dans la base de données. Nous utilisons une requête <i>INSERT</i>. Les valeurs dans la colonne <i>Work</i> et <i>Home</i> sont à <i>Null</i> par défaut. L'utilisateur a le rôle <i>utilisateur</i> lorsqu'il s'inscrit.
 	<li><b>envoieProfile.php</b> : Permet de récolter les données d'un utilisateur à partir de son email. Ce fichier est utilisé lorsque l'utilisateur connecté affiche les détails de son profil. En ayant récupéré seulement son email et son mot de passe de connexion, la fonction du fichier va chercher les informations complémentaires de l'utilisateur. Nous utilisons une requête <i>SELECT</i> sur le mail de la personne connectée.
