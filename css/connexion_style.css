@@ -1,11 +1,5 @@
 /* SETTINGS */
 :root{
-    /* Comment utiliser des variable ?
-    *  écrire :
-    *           color : var(--black);
-    *  à la place de
-    *           color : black;
-    */
     --black : #000000;
     --white : #fffbfb;
     --sncf : #9B2743;
@@ -68,9 +62,23 @@ header>.container>.containerItineraire{
     grid-template-columns: 1fr 2fr;
 }
 header .containerMenu{
+    /*background-color: aqua;*/
     grid-column: 2;
     display: flex;
-    justify-content: space-around;
+    justify-content: start;
+    width: 160%;
+}
+header .containerMenu #nom{
+    padding-right: 10px;
+}
+header .containerMenu #prof{
+    padding-right: 10px;
+}
+header .containerMenu #deco{
+    padding-right: 10px;
+    font-weight: bold;
+    padding-top: 2px;
+    font-size: 16px;
 }
 header>.container>img{
     height: 85px;
@@ -125,7 +133,7 @@ main:has(> div#inscription) {
     height: 12%;
     width: 10%;
 }
-#connexion, #inscription, #choixGare, #itineraire {
+#inscription, #choixGare, #itineraire {
     max-width: 800px;
     width: 60%;
     background-color: var(--white);
@@ -133,6 +141,16 @@ main:has(> div#inscription) {
     padding: 50px;
     padding-left: 100px;padding-right: 100px;
     margin-top: 10px;margin-bottom: 10px;
+}
+#connexion{
+    max-width: 800px;
+    width: 60%;
+    background-color: var(--white);
+    border-radius: 25px;
+    padding-top: 10px; padding-bottom: 1px;
+    padding-left: 100px;padding-right: 100px;
+    margin-top: 140px;margin-bottom: 140px;
+
 }
 #connexion h2, #connexion p, #itineraire h2, #itineraire p, #inscription h2, #inscription p{
     text-align: center;
@@ -249,7 +267,15 @@ footer>.container>a>p{
         margin-left: 23%;
         font-size: 40px;
     }
-    
+
+    header .containerMenu{
+        /*background-color: aqua;*/
+        grid-column: 2;
+        display: flex;
+        justify-content: space-between;
+        width: 108%;
+
+    }
 
     /*MAIN*/
     #connexion, #inscription, #itineraire{

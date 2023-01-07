@@ -21,7 +21,7 @@ function verif_ident($email, $pwd,&$profil=array()){
     $sql = "SELECT email, pwd FROM user WHERE email=:email and pwd=:pwd";
     $commande = $my_Db_Connection->prepare($sql);
     $commande->bindParam(':email', $email);
-    $commande->bindParam(':pwd', $pwd);
+    $commande->bindParam(':pwd', MD5($pwd));
     try{
         $bool = $commande->execute();
         if($bool){

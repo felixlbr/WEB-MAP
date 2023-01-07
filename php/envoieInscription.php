@@ -15,7 +15,7 @@ function inscri($prenom,$email,$pwd){
     $my_Insert_Statement = $my_Db_Connection->prepare($sql);
     $my_Insert_Statement->bindParam(':prenom', $prenom);
     $my_Insert_Statement->bindParam(':email', $email);
-    $my_Insert_Statement->bindParam(':pwd', $pwd);
+    $my_Insert_Statement->bindParam(':pwd', MD5($pwd));
     if ($my_Insert_Statement->execute()) {
         header("Location: ../index.php");
     } else {
