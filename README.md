@@ -248,6 +248,8 @@ La table *user* est composée de plusieurs champs :
 - home
 - work
 - roles (foreign key de Roles(id))
+Le mot de passe de chaque utilisateur est crypté, ce qui signifie que dans la base de donnée, aucun mot de passe n'est en clair. Nous avons utilisé la fonction ```java
+MD5()```. Lors de l'authentification d'un utilisateur, nous vérifions le mot de passe saisie crypté et le mot de passe crypté de la base de donées.
 
 La table *roles* est composée de plusieurs champs :
 - id (primary key)
