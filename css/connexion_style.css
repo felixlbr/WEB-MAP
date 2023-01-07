@@ -147,7 +147,7 @@ main:has(> div#inscription) {
     width: 60%;
     background-color: var(--white);
     border-radius: 25px;
-    padding-top: 10px; padding-bottom: 1px;
+    padding: 50px;
     padding-left: 100px;padding-right: 100px;
     margin-top: 140px;margin-bottom: 140px;
 
