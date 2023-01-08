@@ -30,8 +30,8 @@ Lien vers le site :
 * [Structure du projet](#chapter4)
 	* [PHP/SQL](#section4_1)
 	* [Javascript/JQUERY](#section4_2)
-	* [CSS](#section2_3)
-	* [Base de données](#section4_3)
+	* [CSS](#section4_3)
+	* [Base de données](#section4_4)
 
 * [Architecture](#chapter5)
 	* [Hébergement du projet](#section5_1)
@@ -318,6 +318,8 @@ systemctl restart mariadb
 
 Adresse de la base de données :
 - http://82.165.187.129/
+
+![""](./readme/bd.png "gestion de la base de données")
 
 ### 3. Nom de domaine <a class="anchor" id="section5_3"></a>
 <div align="justify">
