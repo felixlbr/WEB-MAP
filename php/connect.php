@@ -2,7 +2,7 @@
 	$servername = "localhost"; 
 	$database = "webmap";
 	$username = "webmap";
-	$password = "IUT_75";
+	$password = "";
 	$sql = "mysql:server=$servername;dbname=$database;";
 	$dsn_Options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 
