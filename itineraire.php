@@ -53,7 +53,7 @@ else{
         <a id="deco" href="php/logout.php">Deconnexion</a>
       </div>
     </div>
-     <img src="img/sncf_logo.png" alt="logo SNCF">
+     <img src="img/.png" alt="logo">
      <h1>Mon Itineraire</h1>
   </div>
 </header>

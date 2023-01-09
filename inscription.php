@@ -13,7 +13,7 @@
 <!-- HEADER -->
 <header>
     <div class="container">
-        <img src="../img/sncf_logo.png" alt="logo SNCF">
+        <img src="../img/.png" alt="logo">
         <h1>Mon espace</h1>
     </div>
 </header>
@@ -28,7 +28,7 @@
         <div class="container">
             <h2>Inscrivez-vous</h2>
             <br>
-            <p>Création de votre compte SNCF</p>
+            <p>Création de votre compte</p>
             <br>
             <form action= "php/envoieInscription.php" method= "post">
                 Prénom : <input name="prenom" value="<?php echo $prenom="" ?>" /> <br/>

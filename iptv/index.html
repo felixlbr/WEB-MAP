@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Explication et notice IPTV.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 34px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 42px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="explication-et-notice-iptv">Explication et notice IPTV</h1>
+<h2 id="quest-ce-quiptv">Qu'est-ce qu'IPTV ?</h2>
+<p>D'après Wikipédia :
+la télévision IP, ou télévision sur IP1, télévision par ADSL ou IPTV (de l'anglais « Internet Protocol Television ») est une forme de télévision diffusée sur un réseau utilisant l'Internet Protocol.</p>
+<p>Il peut s'agir d'une offre proposée par un fournisseur d'accès à Internet, ou d'un service de vidéo à la demande, ou d'une application Android possiblement incluse dans un téléviseur connecté. Il existe également des services illégaux par le biais d'applications Android ou alors d'un décodeur TV.</p>
+<p><strong>En gros c'est un mec qui diffuse les chaînes sur son ordinateur et on va avoir accès à son écran comme si c'était le notre. L'avantage c'est qu'on va pouvoir avoir accès à TOUTES LES CHAÎNES car la personne a tous les abonnements 😉.</strong></p>
+<h2 id="comment-en-profiter">Comment en profiter ?</h2>
+<h3 id="1-acheter-lacc%C3%A8s-au-serveur">1. Acheter l'accès au serveur</h3>
+<p>Personnellement, j'ai souscrit à des abonnements sur ce <a href="https://www.liveplayer-iptv.com/home/">site</a> et toute la famille en est très contente.</p>
+<p>Je préconise l'abonnement annuel SILVER. De plus, tu auras 20% sur ton premier achat donc ça te revient à <strong>40€ l'année</strong>.</p>
+<p>Tu recevras dans la journée tes identifiants par mail (pas de panique si tu ne les reçois pas dans l'immédiat).</p>
+<h3 id="2-comment-installer-le-syst%C3%A8me">2. Comment installer le système ?</h3>
+<p>Il faut savoir qu'on peut regarder IPTV sur n'importe quelle plateforme (par contre impossible de regarder sur plusieurs écrans simultanément (d'après ce que j'ai pu tester)). Mais rien ne t'empêches d'installer le système sur ton portable, ton ordinateur etc...</p>
+<h4 id="21-t%C3%A9l%C3%A9charger-lapplication">2.1 Télécharger l'application</h4>
+<p>L'application permet de se connecter au serveur et d'accéder aux chaînes.</p>
+<p>Il suffira de télécharger une application IPTV comme :</p>
+<ul>
+<li>IPTV Streamer Max sur l'Apple Store</li>
+<li>Smarters Player Lite sur le Play Store</li>
+</ul>
+<p><strong>Astuce</strong> : Si tu as un boîtier TV (ex : Apple TV, Chromecast, Amazon Fire TV Stick...), tu peux télécharger une application et regarder le tout sur ta télévision.</p>
+<h4 id="22-se-connecter-avec-les-identifiants">2.2 Se connecter avec les identifiants</h4>
+<p>C'est là qu'on va utiliser les informations qu'on a reçues par mail.</p>
+<p>Ça dépendra de l'application mais la configuration reste <em>un peu</em> la même chose.</p>
+<p>Dans les paramètres on va chercher l'onglet <em>fournisseur</em> pour l'ajouter :</p>
+<p><img src="./fournisseur.png" alt=""></p>
+<p>Ensuite si le fournisseur a bien été enregistré, tu trouveras dans la section <em>live</em> tous les dossiers :</p>
+<p><img src="./live.png" alt=""></p>
+<h2 id="quelles-cha%C3%AEnes-disponibles">Quelles chaînes disponibles ?</h2>
+<p>Pour être honnête, il y a assez de chaînes pour suivre une grande partie des tournois mondiaux, tous sports confondus.</p>
+<p>Voici quelques chaînes pour te donner un avant goût :</p>
+<ul>
+<li>Canal et toutes ses chaînes</li>
+<li>Amazon Prime pour la ligue 1</li>
+<li>Bein Sport</li>
+<li>Eurosport
+...</li>
+</ul>
+<h2 id="disclaimer">Disclaimer</h2>
+<p>Je suis obligé de préciser deux choses :</p>
+<p>Ce principe n'est pas très éthique. Voici un article si l'aspect &quot;bon citoyen&quot; compte pour toi : <a href="%22https://www.caminteresse.fr/societe/est-ce-que-liptv-est-legale-11185705/%22">&quot;https://www.caminteresse.fr/societe/est-ce-que-liptv-est-legale-11185705/&quot;</a>
+(j'ai eu la flemme de le lire)</p>
+<p>Aussi, rien ne nous garantie que le service ne cessera pas de fonctionner dans 2 semaines. On n'a aucune garantie donc c'est un choix à prendre. Après pour être honnête, quand tu vois le prix des abonnements aujourd'hui je pense que le jeu en vaut la chandelle.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>N'hésite surtout pas à me contacter si tu as la moindre question.</p>
+<p>Voici mon numéro :</p>
+<ul>
+<li>0626294012</li>
+</ul>
+<p>À bientôt !</p>
+
+</body>
+</html>

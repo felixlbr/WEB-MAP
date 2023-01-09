@@ -1,13 +1,15 @@
 document.querySelector('footer').innerHTML += `
     <div class="container">
-        <a href="https://tgvinoui.sncf/mentions-legales" target="_blank"><p>Mention légales</p></a>
+        <!--<a href="" target="_blank"><p>Mention légales</p></a>
         <hr>
-        <a href="https://tgvinoui.sncf/conditions-generales" target="_blank"><p>Conditions générales</p></a>
+        <a href="" target="_blank"><p>Conditions générales</p></a>
         <hr>
-        <a href="https://tgvinoui.sncf/cookies" target="_blank"><p>Cookies</p></a>
+        <a href="" target="_blank"><p>Cookies</p></a>
         <hr>
-        <a href="https://tgvinoui.sncf/plan-du-site" target="_blank"><p>Plan du site</p></a>
+        <a href="" target="_blank"><p>Plan du site</p></a>
         <hr>
-        <a href="https://tgvinoui.sncf/accessibilite" target="_blank"><p>Accéssibilité</p></a>
+        <a href="" target="_blank"><p>Accéssibilité</p></a>-->
+
+        <a href="https://github.com/tigrou23/WEB-MAP" target="_blank"><p>Informations sur le site</p></a>
     </div>
 `

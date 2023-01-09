@@ -31,7 +31,7 @@ if($_SESSION['profil'] == null){
         <a id="deco" href="./logout.php">Deconnexion</a>
       </div>
     </div>
-     <img src="../img/sncf_logo.png" alt="logo SNCF">
+     <img src="../img/.png" alt="logo">
      <h1>Mon Profil</h1>
   </div>
 </header>

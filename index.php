@@ -13,7 +13,7 @@
 <!-- HEADER -->
 <header>
     <div class="container">
-        <img src="../img/sncf_logo.png" alt="logo SNCF">
+        <img src="../img/.png" alt="logo">
         <h1>Connexion</h1>
     </div>
 </header>
@@ -28,7 +28,7 @@
         <div class="container">
             <h2>Connectez-vous</h2>
             <br>
-            <p>Authentifiez-vous avec Mon Identifiant SNCF</p>
+            <p>Authentifiez-vous avec Mon Identifiant</p>
             <br>
             <form action= "php/envoieConnexion.php" method= "post">
                 E-mail : <input type="email" name="email" value="<?php echo $email=""?>" /> <br/>
